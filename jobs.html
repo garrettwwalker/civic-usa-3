@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government jobs — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="jobs">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="disclaimer">
+        ⓘ <strong>Demo data:</strong> Job postings, applications, and statuses shown are simulated.
+      </div>
+
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Government Jobs</h1>
+          <p id="jobsSub">State, county, and federal openings filtered by your résumé and location.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="openProfileModal();">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          Edit profile
+        </button>
+      </div>
+
+      <div class="grid-4 mb-6">
+        <div class="stat">
+          <div class="stat-label">Roles matching your profile</div>
+          <div class="stat-value">23</div>
+          <div class="stat-trend up">↑ 4 new this week</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Active applications</div>
+          <div class="stat-value">4</div>
+          <div class="stat-trend">2 awaiting response</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Interviews scheduled</div>
+          <div class="stat-value">1</div>
+          <div class="stat-trend">May 12 · 10 AM</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Saved searches</div>
+          <div class="stat-value">3</div>
+          <div class="stat-trend">Daily email digest on</div>
+        </div>
+      </div>
+
+      <div class="row-between mb-4">
+        <h2 class="text-xl">Featured Openings</h2>
+        <a class="card-link" href="#">View all 23</a>
+      </div>
+      <div class="grid-2 mb-6">
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">Senior UX Designer</div>
+            <span class="badge badge-info">Top match</span>
+          </div>
+          <p class="text-muted mb-4">Department of Technology · Lead user research and design across the citizen-facing service portal. Hybrid 2 days/week onsite.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Salary</label><div class="value">$118k – $146k</div></div>
+            <div class="info-field"><label>Type</label><div class="value">Full-time · Civil service</div></div>
+            <div class="info-field"><label>Location</label><div class="value">Hybrid · Sacramento</div></div>
+            <div class="info-field"><label>Posted</label><div class="value">3 days ago</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="openApplyModal('Senior UX Designer', 'Department of Technology', '$118k – $146k', 'Hybrid · Sacramento');">Apply with profile</button>
+            <button class="btn btn-secondary" onclick="alert('Saved to your shortlist. (Demo)');">Save</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">Data Analyst II</div>
+            <span class="badge badge-info">Strong match</span>
+          </div>
+          <p class="text-muted mb-4">Department of Public Health · Build dashboards and run analyses for the immunization program team.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Salary</label><div class="value">$92k – $114k</div></div>
+            <div class="info-field"><label>Type</label><div class="value">Full-time · Civil service</div></div>
+            <div class="info-field"><label>Location</label><div class="value">Remote (in-state)</div></div>
+            <div class="info-field"><label>Posted</label><div class="value">1 week ago</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="openApplyModal('Data Analyst II', 'Department of Public Health', '$92k – $114k', 'Remote (in-state)');">Apply with profile</button>
+            <button class="btn btn-secondary" onclick="alert('Saved. (Demo)');">Save</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">Park Ranger I</div>
+            <span class="badge badge-neutral">Open</span>
+          </div>
+          <p class="text-muted mb-4">State Parks · Visitor services, trail patrol, and resource education at Topanga State Park.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Salary</label><div class="value">$58k – $72k</div></div>
+            <div class="info-field"><label>Type</label><div class="value">Full-time · Seasonal eligible</div></div>
+            <div class="info-field"><label>Location</label><div class="value">Topanga, CA</div></div>
+            <div class="info-field"><label>Posted</label><div class="value">2 weeks ago</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-secondary" onclick="alert('Application started. (Demo)');">Start application</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">Public Records Specialist</div>
+            <span class="badge badge-neutral">Open</span>
+          </div>
+          <p class="text-muted mb-4">County Clerk's Office · Process, redact, and route public records requests under the Public Records Act.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Salary</label><div class="value">$64k – $79k</div></div>
+            <div class="info-field"><label>Type</label><div class="value">Full-time · Union</div></div>
+            <div class="info-field"><label>Location</label><div class="value">Onsite · Los Angeles</div></div>
+            <div class="info-field"><label>Posted</label><div class="value">5 days ago</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-secondary" onclick="alert('Application started. (Demo)');">Start application</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Your Applications</div>
+          <a class="card-link" href="#">View archive</a>
+        </div>
+        <table class="table">
+          <thead><tr><th>Position</th><th>Department</th><th>Submitted</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Civic Engagement Coordinator</strong></td>
+              <td>Mayor's Office</td>
+              <td>Apr 28</td>
+              <td><span class="badge badge-info">Interview scheduled</span></td>
+            </tr>
+            <tr>
+              <td><strong>UX Researcher</strong></td>
+              <td>DMV</td>
+              <td>Apr 14</td>
+              <td><span class="badge badge-warning">Under review</span></td>
+            </tr>
+            <tr>
+              <td><strong>Communications Analyst</strong></td>
+              <td>Dept. of Health</td>
+              <td>Apr 9</td>
+              <td><span class="badge badge-warning">Under review</span></td>
+            </tr>
+            <tr>
+              <td><strong>Junior Designer</strong></td>
+              <td>State Parks</td>
+              <td>Mar 22</td>
+              <td><span class="badge badge-success">Offer extended</span></td>
+            </tr>
+            <tr>
+              <td><strong>Senior Project Manager</strong></td>
+              <td>Dept. of Transportation</td>
+              <td>Mar 4</td>
+              <td><span class="badge badge-neutral">Closed · not selected</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Profile modal -->
+  <div class="modal-backdrop" id="profileModal" hidden onclick="if(event.target===this)closeProfileModal()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+      <button class="modal-close" type="button" onclick="closeProfileModal()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-info">Verified profile</span>
+        <h2 id="profileTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">Edit Your Hiring Profile</h2>
+        <p class="text-muted mt-2" style="font-size:15px;line-height:1.5;">Pre-filled from your verified ePluribus identity. Updates apply to all future applications.</p>
+      </div>
+      <div class="modal-body">
+        <div class="grid-2 mb-6">
+          <div class="form-row">
+            <label>Full name</label>
+            <input type="text" id="profileName" placeholder="—">
+          </div>
+          <div class="form-row">
+            <label>Phone</label>
+            <input type="tel" id="profilePhone" placeholder="—">
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" id="profileEmail" placeholder="—">
+          </div>
+          <div class="form-row">
+            <label>Address</label>
+            <input type="text" id="profileAddress" placeholder="—">
+          </div>
+          <div class="form-row" style="grid-column:1 / -1;">
+            <label>Professional summary</label>
+            <textarea id="profileSummary" rows="3" placeholder="A few lines on what you do and what you're looking for."></textarea>
+          </div>
+          <div class="form-row">
+            <label>Years of experience</label>
+            <select id="profileYears">
+              <option>0–2 years</option>
+              <option selected>3–5 years</option>
+              <option>6–10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Work authorization</label>
+            <select id="profileAuth">
+              <option selected>U.S. citizen</option>
+              <option>Permanent resident</option>
+              <option>Visa sponsorship needed</option>
+            </select>
+          </div>
+          <div class="form-row" style="grid-column:1 / -1;">
+            <label>Top skills</label>
+            <input type="text" id="profileSkills" placeholder="Comma-separated, e.g. SQL, Figma, public speaking">
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--surface-2);padding:14px;margin-bottom:12px;">
+          <div class="row-between" style="align-items:center;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              <div>
+                <div style="font-weight:500;font-size:14px;" id="profileResume">resume.pdf</div>
+                <div class="text-sm text-muted">Last updated 2 weeks ago</div>
+              </div>
+            </div>
+            <button class="btn btn-ghost" type="button" onclick="alert('Résumé upload would open. (Demo)');" style="font-size:13px;">Replace</button>
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--surface-2);padding:14px;margin-bottom:20px;">
+          <div class="row-between" style="align-items:center;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <div>
+                <div style="font-weight:500;font-size:14px;">3 references on file</div>
+                <div class="text-sm text-muted">Mitchell, Park, Singh · contactable on request</div>
+              </div>
+            </div>
+            <button class="btn btn-ghost" type="button" onclick="alert('Reference manager would open. (Demo)');" style="font-size:13px;">Manage</button>
+          </div>
+        </div>
+
+        <div class="row-between mt-6">
+          <span class="text-sm text-muted">Changes save to your verified profile.</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-ghost" type="button" onclick="closeProfileModal()">Cancel</button>
+            <button class="btn btn-primary" type="button" onclick="saveProfile()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apply modal -->
+  <div class="modal-backdrop" id="applyModal" hidden onclick="if(event.target===this)closeApplyModal()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="applyTitle">
+      <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-info" id="applyDept">Department</span>
+        <h2 id="applyTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">Apply</h2>
+        <p class="text-muted mt-2" style="font-size:15px;line-height:1.5;" id="applySub">Pre-filled from your verified ePluribus profile. Review, add a cover letter, and submit.</p>
+      </div>
+      <div class="modal-body">
+        <div class="grid-2 mb-6" style="gap:12px;">
+          <div class="info-field"><label>Position</label><div class="value" id="applyPosition">—</div></div>
+          <div class="info-field"><label>Salary range</label><div class="value" id="applySalary">—</div></div>
+          <div class="info-field"><label>Location</label><div class="value" id="applyLocation">—</div></div>
+          <div class="info-field"><label>Applying as</label><div class="value" id="applyName">—</div></div>
+        </div>
+
+        <div class="card" style="background:var(--surface-2);padding:14px;margin-bottom:20px;">
+          <div class="row-between" style="align-items:center;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              <div>
+                <div style="font-weight:500;font-size:14px;" id="applyResume">resume.pdf</div>
+                <div class="text-sm text-muted">Last updated 2 weeks ago · attached automatically</div>
+              </div>
+            </div>
+            <button class="btn btn-ghost" type="button" onclick="alert('Résumé manager would open. (Demo)');" style="font-size:13px;">Replace</button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Cover letter</label>
+          <textarea id="applyCover" rows="5" placeholder="Why this role, why now. Two or three short paragraphs is plenty."></textarea>
+        </div>
+
+        <div class="form-row" style="margin-top:14px;">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:400;">
+            <input type="checkbox" id="applyRefs" checked style="width:auto;">
+            <span>Include references from my profile (3 attached)</span>
+          </label>
+        </div>
+
+        <div class="row-between mt-6">
+          <span class="text-sm text-muted">You'll receive a confirmation by text within minutes.</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-ghost" type="button" onclick="closeApplyModal()">Cancel</button>
+            <button class="btn btn-primary" type="button" onclick="submitApply()">Submit application</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('jobsSub').textContent =
+        `${u.stateName} state, county, and federal openings filtered by your résumé and location.`;
+    }
+
+    function openApplyModal(title, dept, salary, location) {
+      document.getElementById('applyTitle').textContent = title;
+      document.getElementById('applyDept').textContent = dept;
+      document.getElementById('applyPosition').textContent = title;
+      document.getElementById('applySalary').textContent = salary || '—';
+      document.getElementById('applyLocation').textContent = location || '—';
+      const cu = getCitizen();
+      const fullName = cu ? `${cu.firstName} ${cu.lastName}` : 'Your profile';
+      document.getElementById('applyName').textContent = fullName;
+      document.getElementById('applyResume').textContent =
+        `${(cu ? cu.firstName.toLowerCase() + '-' + cu.lastName.toLowerCase() : 'resume')}-resume.pdf`;
+      document.getElementById('applyCover').value = '';
+      document.getElementById('applyModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('applyCover').focus(), 50);
+    }
+
+    function closeApplyModal() {
+      document.getElementById('applyModal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function submitApply() {
+      const title = document.getElementById('applyTitle').textContent;
+      alert(`Application submitted for ${title}. You'll get a confirmation text shortly. (Demo)`);
+      closeApplyModal();
+    }
+
+    function openProfileModal() {
+      const cu = getCitizen();
+      const fullName = cu ? `${cu.firstName} ${cu.lastName}` : '';
+      const slug = cu ? `${cu.firstName.toLowerCase()}-${cu.lastName.toLowerCase()}` : 'resume';
+      const phone = cu ? `(${cu.state === 'CA' ? '310' : '202'}) 555-${String(1000 + ((cu.firstName.length * 37 + cu.lastName.length * 17) % 9000)).padStart(4,'0')}` : '';
+      const email = cu ? `${cu.firstName.toLowerCase()}.${cu.lastName.toLowerCase()}@mail.com` : '';
+      const address = cu ? `${cu.address}, ${cu.city}, ${cu.state}` : '';
+      document.getElementById('profileName').value = fullName;
+      document.getElementById('profilePhone').value = phone;
+      document.getElementById('profileEmail').value = email;
+      document.getElementById('profileAddress').value = address;
+      document.getElementById('profileSummary').value =
+        'Experienced public-sector professional focused on citizen-facing service design and program delivery. Open to hybrid or remote roles in policy, research, or operations.';
+      document.getElementById('profileSkills').value = 'Stakeholder facilitation, SQL, plain-language writing, civic tech, accessibility';
+      document.getElementById('profileResume').textContent = `${slug}-resume.pdf`;
+      document.getElementById('profileModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('profileSummary').focus(), 50);
+    }
+
+    function closeProfileModal() {
+      document.getElementById('profileModal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function saveProfile() {
+      alert('Profile saved. Future applications will use these details. (Demo)');
+      closeProfileModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        const apply = document.getElementById('applyModal');
+        if (apply && !apply.hidden) { closeApplyModal(); return; }
+        const profile = document.getElementById('profileModal');
+        if (profile && !profile.hidden) closeProfileModal();
+      }
+    });
+  </script>
+</body>
+</html>

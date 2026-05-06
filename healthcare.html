@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health insurance — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="healthcare">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="disclaimer">
+        ⓘ <strong>Demo data:</strong> Plans, premiums, providers, and balances shown are simulated.
+      </div>
+
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Health Insurance</h1>
+          <p id="hcSub">Plans, payments, network providers, and policy documents — managed in one place.</p>
+        </div>
+      </div>
+
+      <div class="banner-success">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div>All 3 plans <strong>active</strong> and in good standing. Next premium due <strong>Jun 1, 2026</strong> · auto-pay on.</div>
+      </div>
+
+      <div class="grid-4 mb-6">
+        <div class="stat">
+          <div class="stat-label">Active plans</div>
+          <div class="stat-value">3</div>
+          <div class="stat-trend">Health · Dental · Vision</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Member since</div>
+          <div class="stat-value">2018</div>
+          <div class="stat-trend">8 years continuous coverage</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Out-of-pocket YTD</div>
+          <div class="stat-value">$1,247</div>
+          <div class="stat-trend">of $7,500 max</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Next renewal</div>
+          <div class="stat-value">Dec 31</div>
+          <div class="stat-trend up">Open enrollment Nov 1</div>
+        </div>
+      </div>
+
+      <h2 class="text-xl mb-4">Active Plans</h2>
+      <div class="grid-3 mb-6">
+        <div class="card plan-tile" tabindex="0">
+          <div class="row-between mb-3">
+            <div class="card-title">Health</div>
+            <span class="badge badge-success"><span class="dot"></span>Active</span>
+          </div>
+          <div class="plan-tile-summary">
+            <span class="premium">$385<span class="meta"> / mo</span></span>
+            <span class="meta" id="hcHealthId">XJP-2841-04</span>
+          </div>
+          <div class="plan-extra"><div>
+            <div class="text-sm text-muted mb-3" style="font-weight:500;">BlueShield Gold PPO 2000</div>
+            <div class="scanned-info">
+              <div class="info-field"><label>Deductible</label><div class="value">$2,000</div></div>
+              <div class="info-field"><label>OOP max</label><div class="value">$7,500</div></div>
+              <div class="info-field"><label>Effective</label><div class="value">Jan 1, 2024</div></div>
+              <div class="info-field"><label>Renews</label><div class="value">Dec 31, 2026</div></div>
+            </div>
+            <div class="row mt-4" style="gap:8px;">
+              <button class="btn btn-primary" onclick="openInsuranceCardModal('health');">View card</button>
+              <button class="btn btn-secondary" onclick="openDetailsModal('health');">Details</button>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="card plan-tile" tabindex="0">
+          <div class="row-between mb-3">
+            <div class="card-title">Dental</div>
+            <span class="badge badge-success"><span class="dot"></span>Active</span>
+          </div>
+          <div class="plan-tile-summary">
+            <span class="premium">$42<span class="meta"> / mo</span></span>
+            <span class="meta">DDP-72611-04</span>
+          </div>
+          <div class="plan-extra"><div>
+            <div class="text-sm text-muted mb-3" style="font-weight:500;">Delta Dental PPO Premier</div>
+            <div class="scanned-info">
+              <div class="info-field"><label>Annual max</label><div class="value">$2,000</div></div>
+              <div class="info-field"><label>Preventive</label><div class="value">100%</div></div>
+              <div class="info-field"><label>Effective</label><div class="value">Jan 1, 2024</div></div>
+              <div class="info-field"><label>Renews</label><div class="value">Dec 31, 2026</div></div>
+            </div>
+            <div class="row mt-4" style="gap:8px;">
+              <button class="btn btn-primary" onclick="openInsuranceCardModal('dental');">View card</button>
+              <button class="btn btn-secondary" onclick="openDetailsModal('dental');">Details</button>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="card plan-tile" tabindex="0">
+          <div class="row-between mb-3">
+            <div class="card-title">Vision</div>
+            <span class="badge badge-success"><span class="dot"></span>Active</span>
+          </div>
+          <div class="plan-tile-summary">
+            <span class="premium">$14<span class="meta"> / mo</span></span>
+            <span class="meta">VSP-58420-04</span>
+          </div>
+          <div class="plan-extra"><div>
+            <div class="text-sm text-muted mb-3" style="font-weight:500;">VSP Choice</div>
+            <div class="scanned-info">
+              <div class="info-field"><label>Exam copay</label><div class="value">$10</div></div>
+              <div class="info-field"><label>Frames</label><div class="value">$200 / 12 mo</div></div>
+              <div class="info-field"><label>Effective</label><div class="value">Jan 1, 2024</div></div>
+              <div class="info-field"><label>Renews</label><div class="value">Dec 31, 2026</div></div>
+            </div>
+            <div class="row mt-4" style="gap:8px;">
+              <button class="btn btn-primary" onclick="openInsuranceCardModal('vision');">View card</button>
+              <button class="btn btn-secondary" onclick="openDetailsModal('vision');">Details</button>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <h2 class="text-xl mb-4">Renewal &amp; Auto-Pay</h2>
+      <div class="card mb-6">
+        <div class="row-between mb-4">
+          <div>
+            <div class="card-title">Open Enrollment for 2027</div>
+            <p class="text-muted text-sm mt-2">All three plans auto-renew Dec 31, 2026 at <strong>$441/mo</strong> unless you change coverage.</p>
+          </div>
+          <span class="badge badge-info"><span class="dot"></span>Opens Nov 1</span>
+        </div>
+        <div class="grid-4">
+          <div class="info-field"><label>Enrollment window</label><div class="value">Nov 1 – Dec 15, 2026</div></div>
+          <div class="info-field"><label>2027 effective</label><div class="value">Jan 1, 2027</div></div>
+          <div class="info-field"><label>Auto-renewal</label><div class="value">On · all 3 plans</div></div>
+          <div class="info-field"><label>Payment method</label><div class="value">Bank ···· 4408</div></div>
+        </div>
+        <div class="row mt-4" style="gap:8px;">
+          <button class="btn btn-primary" onclick="openCompareModal();">Compare 2027 plans</button>
+          <button class="btn btn-secondary" onclick="alert('Auto-renewal settings opened. (Demo)');">Manage auto-renewal</button>
+          <button class="btn btn-ghost" onclick="alert('Payment method update. (Demo)');">Update payment method</button>
+        </div>
+      </div>
+
+      <div class="grid-2 mb-6">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Network Providers</div>
+            <a class="card-link" href="#" onclick="event.preventDefault();alert('Provider directory opens. (Demo)');">Search directory</a>
+          </div>
+          <ul class="list">
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Dr. Sarah Patel <span class="badge badge-success" style="margin-left:6px;">In-network</span></div>
+                <div class="list-item-sub">Primary care · 2.1 mi</div>
+              </div>
+              <div class="list-item-meta">PCP</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Dr. James Chen <span class="badge badge-success" style="margin-left:6px;">In-network</span></div>
+                <div class="list-item-sub">Cardiology · 4.8 mi</div>
+              </div>
+              <div class="list-item-meta">Specialist</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21V12h6v9"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Dr. Maria Lopez <span class="badge badge-success" style="margin-left:6px;">In-network</span></div>
+                <div class="list-item-sub">Dental · 0.8 mi</div>
+              </div>
+              <div class="list-item-meta">Dental</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">LensCrafters Westside <span class="badge badge-success" style="margin-left:6px;">In-network</span></div>
+                <div class="list-item-sub">Vision · Culver City</div>
+              </div>
+              <div class="list-item-meta">Vision</div>
+            </li>
+          </ul>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-secondary" onclick="alert('Find a doctor opens. (Demo)');">Find in-network</button>
+            <button class="btn btn-ghost" onclick="alert('Add provider. (Demo)');">Add provider</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Documents</div>
+            <a class="card-link" href="#" onclick="event.preventDefault();alert('All documents opens. (Demo)');">View all</a>
+          </div>
+          <ul class="list">
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">2025 Form 1095-B</div>
+                <div class="list-item-sub">Coverage proof for tax filing</div>
+              </div>
+              <a class="card-link" href="#" onclick="event.preventDefault();alert('PDF download. (Demo)');">PDF</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Summary of Benefits</div>
+                <div class="list-item-sub">BlueShield Gold PPO · 12 pages</div>
+              </div>
+              <a class="card-link" href="#" onclick="event.preventDefault();alert('PDF download. (Demo)');">PDF</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M15 10h3M15 14h3"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Member ID cards (3)</div>
+                <div class="list-item-sub">Add to digital wallet</div>
+              </div>
+              <a class="card-link" href="#" onclick="event.preventDefault();alert('Cards opened. (Demo)');">Open</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">2025 Year-end EOB</div>
+                <div class="list-item-sub">All claims · 24 pages</div>
+              </div>
+              <a class="card-link" href="#" onclick="event.preventDefault();alert('PDF download. (Demo)');">PDF</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/></svg></div>
+              <div class="list-item-content">
+                <div class="list-item-title">2026 enrollment</div>
+                <div class="list-item-sub">All 3 plans · Dec 8, 2025</div>
+              </div>
+              <a class="card-link" href="#" onclick="event.preventDefault();alert('PDF download. (Demo)');">PDF</a>
+            </li>
+          </ul>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-secondary" onclick="alert('Upload form. (Demo)');">Upload document</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Payment History</div>
+          <a class="card-link" href="#" onclick="event.preventDefault();alert('Statements export. (Demo)');">Export statements</a>
+        </div>
+        <table class="table">
+          <thead><tr><th>Date</th><th>Plan</th><th>Method</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>May 1, 2026</td><td>Health · Dental · Vision</td><td>Bank ···· 4408</td><td>$441.00</td><td><span class="badge badge-success">Paid</span></td></tr>
+            <tr><td>Apr 1, 2026</td><td>Health · Dental · Vision</td><td>Bank ···· 4408</td><td>$441.00</td><td><span class="badge badge-success">Paid</span></td></tr>
+            <tr><td>Mar 1, 2026</td><td>Health · Dental · Vision</td><td>Bank ···· 4408</td><td>$441.00</td><td><span class="badge badge-success">Paid</span></td></tr>
+            <tr><td>Feb 14, 2026</td><td>Out-of-pocket adjustment</td><td>Bank ···· 4408</td><td>$184.50</td><td><span class="badge badge-success">Paid</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Plan details + comparison modal -->
+  <div class="modal-backdrop" id="detailsModal" hidden onclick="if(event.target===this)closeDetailsModal()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+      <button class="modal-close" type="button" onclick="closeDetailsModal()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-success"><span class="dot"></span><span id="detailsBadgeLabel">Active</span></span>
+        <h2 id="detailsTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">Plan Details</h2>
+        <p class="text-muted mt-2" style="font-size:15px;line-height:1.5;" id="detailsSub">Your current coverage in detail, plus everyday plan-management actions.</p>
+      </div>
+      <div class="modal-body" id="detailsBody"></div>
+    </div>
+  </div>
+
+  <!-- Insurance member card modal -->
+  <div class="modal-backdrop" id="cardModal" hidden onclick="if(event.target===this)closeInsuranceCardModal()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
+      <button class="modal-close" type="button" onclick="closeInsuranceCardModal()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-info" id="cardModalBadge">Health</span>
+        <h2 id="cardModalTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">Member Card</h2>
+        <p class="text-muted mt-2" style="font-size:15px;line-height:1.5;">Show this at provider check-in or pharmacy. The card is stored in your wallet for offline use.</p>
+      </div>
+      <div class="modal-body" style="display:flex;justify-content:center;">
+        <div style="width:100%;max-width:520px;">
+          <!-- Health -->
+          <div class="doc-card health-card" data-plan="health" hidden>
+            <div class="health-header">
+              <div class="health-provider">BlueShield</div>
+              <div class="health-tier">Gold PPO 2000</div>
+            </div>
+            <div class="health-name" data-name></div>
+            <div class="health-fields">
+              <div><span>Member ID</span><strong>XJP-2841-04</strong></div>
+              <div><span>Group #</span><strong>G-4421</strong></div>
+              <div><span>BIN</span><strong>003858</strong></div>
+              <div><span>RxPCN</span><strong>BSCN</strong></div>
+              <div><span>Effective</span><strong>01/01/2024</strong></div>
+              <div><span>Network</span><strong>PPO Plus</strong></div>
+            </div>
+            <div class="health-copays">
+              <div><span>PCP</span><strong>$30</strong></div>
+              <div><span>Specialist</span><strong>$50</strong></div>
+              <div><span>Urgent Care</span><strong>$75</strong></div>
+              <div><span>ER</span><strong>$300</strong></div>
+            </div>
+            <div class="health-rx" aria-hidden="true">Rx</div>
+          </div>
+
+          <!-- Dental -->
+          <div class="doc-card dental-card" data-plan="dental" hidden>
+            <div class="health-header">
+              <div class="health-provider">Delta Dental</div>
+              <div class="health-tier">PPO Premier</div>
+            </div>
+            <div class="health-name" data-name></div>
+            <div class="health-fields">
+              <div><span>Member ID</span><strong>DDP-72611-04</strong></div>
+              <div><span>Group #</span><strong>G-7261</strong></div>
+              <div><span>Network</span><strong>Premier</strong></div>
+              <div><span>Annual Max</span><strong>$2,000</strong></div>
+              <div><span>Effective</span><strong>01/01/2024</strong></div>
+              <div><span>Plan Year</span><strong>2026</strong></div>
+            </div>
+            <div class="health-copays">
+              <div><span>Preventive</span><strong>100%</strong></div>
+              <div><span>Basic</span><strong>80%</strong></div>
+              <div><span>Major</span><strong>50%</strong></div>
+              <div><span>Cleanings</span><strong>2/yr</strong></div>
+            </div>
+            <div class="health-rx" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3c-2.5 0-3.8 1.2-5 1.2S4.5 3 3 3.6c0 4 .6 7 1.5 9.4.7 2 1 4 2 6 .5 1 1 2 2 2 1.4 0 1.6-3 2.5-3s1.1 3 2.5 3c1 0 1.5-1 2-2 1-2 1.3-4 2-6 .9-2.4 1.5-5.4 1.5-9.4-1.5-.6-2.7.6-4 .6S14.5 3 12 3z" opacity="0.95"/></svg>
+            </div>
+          </div>
+
+          <!-- Vision -->
+          <div class="doc-card vision-card" data-plan="vision" hidden>
+            <div class="health-header">
+              <div class="health-provider">VSP</div>
+              <div class="health-tier">Choice</div>
+            </div>
+            <div class="health-name" data-name></div>
+            <div class="health-fields">
+              <div><span>Member ID</span><strong>VSP-58420-04</strong></div>
+              <div><span>Group #</span><strong>G-5842</strong></div>
+              <div><span>Network</span><strong>Choice</strong></div>
+              <div><span>Effective</span><strong>01/01/2024</strong></div>
+              <div><span>Plan Year</span><strong>2026</strong></div>
+              <div><span>Coverage</span><strong>Self + 0</strong></div>
+            </div>
+            <div class="health-copays">
+              <div><span>Exam</span><strong>$10</strong></div>
+              <div><span>Frames</span><strong>$200</strong></div>
+              <div><span>Lenses</span><strong>$25</strong></div>
+              <div><span>Contacts</span><strong>$150</strong></div>
+            </div>
+            <div class="health-rx" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body" style="padding-top:0;">
+        <div class="row-between mt-2">
+          <span class="text-sm text-muted">Card stored offline in your digital wallet.</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-ghost" type="button" onclick="closeInsuranceCardModal()">Close</button>
+            <a class="btn btn-primary" href="license.html">Open in wallet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2027 plan compare modal -->
+  <div class="modal-backdrop" id="compareModal" hidden onclick="if(event.target===this)closeCompareModal()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+      <button class="modal-close" type="button" onclick="closeCompareModal()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-info">Open Enrollment · Nov 1 – Dec 15, 2026</span>
+        <h2 id="compareTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">Compare 2027 Plans</h2>
+        <p class="text-muted mt-2" style="font-size:15px;line-height:1.5;">Your current coverage side-by-side with 2027 renewal pricing and a cheaper alternative for each line. Premiums shown are after subsidies you already qualify for.</p>
+      </div>
+      <div class="modal-body">
+
+        <div class="card mb-4" style="padding:18px;">
+          <div class="row-between mb-3">
+            <div style="font-weight:600;font-size:15px;">Health · Anthem Blue Cross Bronze HMO</div>
+            <span class="badge badge-success">Top match</span>
+          </div>
+          <table class="table" style="margin:0;">
+            <thead><tr><th></th><th>2026 (current)</th><th>2027 renewal</th><th>2027 alternative · Silver HMO</th></tr></thead>
+            <tbody>
+              <tr><td>Monthly premium</td><td>$312</td><td><strong>$328</strong></td><td>$362</td></tr>
+              <tr><td>Deductible</td><td>$4,200</td><td>$4,400</td><td>$2,000</td></tr>
+              <tr><td>Out-of-pocket max</td><td>$8,400</td><td>$8,700</td><td>$5,800</td></tr>
+              <tr><td>PCP visit copay</td><td>$45</td><td>$45</td><td>$25</td></tr>
+              <tr><td>Network</td><td>HMO · 4,200 providers</td><td>HMO · 4,200 providers</td><td>HMO · 4,200 providers</td></tr>
+            </tbody>
+          </table>
+          <div class="row-between mt-3">
+            <span class="text-sm text-muted">Both 2027 options keep your current PCP (Dr. Lee).</span>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-secondary" type="button" style="font-size:13px;" onclick="markChoice('health','keep')">Keep renewal</button>
+              <button class="btn btn-primary" type="button" style="font-size:13px;" onclick="markChoice('health','switch')">Switch to Silver</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4" style="padding:18px;">
+          <div class="row-between mb-3">
+            <div style="font-weight:600;font-size:15px;">Dental · Delta Dental PPO</div>
+            <span class="badge badge-neutral">No change</span>
+          </div>
+          <table class="table" style="margin:0;">
+            <thead><tr><th></th><th>2026 (current)</th><th>2027 renewal</th><th>2027 alternative · Basic</th></tr></thead>
+            <tbody>
+              <tr><td>Monthly premium</td><td>$58</td><td><strong>$61</strong></td><td>$38</td></tr>
+              <tr><td>Annual maximum</td><td>$1,500</td><td>$1,500</td><td>$1,000</td></tr>
+              <tr><td>Cleanings / year</td><td>2 covered</td><td>2 covered</td><td>2 covered</td></tr>
+              <tr><td>Major work coverage</td><td>50%</td><td>50%</td><td>30%</td></tr>
+            </tbody>
+          </table>
+          <div class="row-between mt-3">
+            <span class="text-sm text-muted">Most members renew the PPO if they had any major work in the last 2 years.</span>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-secondary" type="button" style="font-size:13px;" onclick="markChoice('dental','keep')">Keep renewal</button>
+              <button class="btn btn-primary" type="button" style="font-size:13px;" onclick="markChoice('dental','switch')">Switch to Basic</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4" style="padding:18px;">
+          <div class="row-between mb-3">
+            <div style="font-weight:600;font-size:15px;">Vision · VSP Choice</div>
+            <span class="badge badge-success">Best value</span>
+          </div>
+          <table class="table" style="margin:0;">
+            <thead><tr><th></th><th>2026 (current)</th><th>2027 renewal</th><th>2027 alternative · Plus</th></tr></thead>
+            <tbody>
+              <tr><td>Monthly premium</td><td>$19</td><td><strong>$19</strong></td><td>$28</td></tr>
+              <tr><td>Eye exam copay</td><td>$10</td><td>$10</td><td>$0</td></tr>
+              <tr><td>Frame allowance</td><td>$150</td><td>$150</td><td>$220</td></tr>
+              <tr><td>Lens upgrades</td><td>Standard</td><td>Standard</td><td>Premium incl.</td></tr>
+            </tbody>
+          </table>
+          <div class="row-between mt-3">
+            <span class="text-sm text-muted">No premium increase on the renewal — most members keep this plan.</span>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-secondary" type="button" style="font-size:13px;" onclick="markChoice('vision','keep')">Keep renewal</button>
+              <button class="btn btn-primary" type="button" style="font-size:13px;" onclick="markChoice('vision','switch')">Switch to Plus</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--surface-2);padding:14px;margin-bottom:20px;">
+          <div class="row-between" style="align-items:center;">
+            <div>
+              <div style="font-weight:600;font-size:15px;">Total monthly cost · 2027</div>
+              <div class="text-sm text-muted" id="compareTotalSub">All renewals · same coverage as today</div>
+            </div>
+            <div style="font-size:24px;font-weight:600;letter-spacing:-0.02em;" id="compareTotal">$408</div>
+          </div>
+        </div>
+
+        <div class="row-between mt-6">
+          <span class="text-sm text-muted">You can change selections anytime through Dec 15.</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-ghost" type="button" onclick="closeCompareModal()">Close</button>
+            <button class="btn btn-primary" type="button" onclick="confirmEnrollment()">Confirm 2027 enrollment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('hcSub').textContent =
+        `Plans, payments, network providers, and policy documents in ${u.stateName} — managed in one place.`;
+    }
+
+    const PLAN_CHOICES = { health: 'keep', dental: 'keep', vision: 'keep' };
+    const PLAN_PRICES = {
+      health: { keep: 328, switch: 362 },
+      dental: { keep: 61,  switch: 38  },
+      vision: { keep: 19,  switch: 28  },
+    };
+
+    function openCompareModal() {
+      // reset to renewals on each open
+      PLAN_CHOICES.health = 'keep';
+      PLAN_CHOICES.dental = 'keep';
+      PLAN_CHOICES.vision = 'keep';
+      updateCompareTotal();
+      document.getElementById('compareModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCompareModal() {
+      document.getElementById('compareModal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function markChoice(line, choice) {
+      PLAN_CHOICES[line] = choice;
+      updateCompareTotal();
+    }
+
+    function updateCompareTotal() {
+      const total =
+        PLAN_PRICES.health[PLAN_CHOICES.health] +
+        PLAN_PRICES.dental[PLAN_CHOICES.dental] +
+        PLAN_PRICES.vision[PLAN_CHOICES.vision];
+      document.getElementById('compareTotal').textContent = `$${total}`;
+      const switches = Object.entries(PLAN_CHOICES).filter(([, v]) => v === 'switch').map(([k]) => k);
+      const sub = switches.length === 0
+        ? 'All renewals · same coverage as today'
+        : `Switching: ${switches.join(', ')}`;
+      document.getElementById('compareTotalSub').textContent = sub;
+    }
+
+    function confirmEnrollment() {
+      const switches = Object.entries(PLAN_CHOICES).filter(([, v]) => v === 'switch').map(([k]) => k);
+      const msg = switches.length === 0
+        ? 'All three plans confirmed as 2027 renewals. (Demo)'
+        : `2027 enrollment saved. Switching: ${switches.join(', ')}. (Demo)`;
+      alert(msg);
+      closeCompareModal();
+    }
+
+    const PLAN_DETAILS = {
+      health: {
+        title: 'Health Plan Details',
+        sub: 'Detailed coverage for your current health plan, plus a brief comparison with available alternatives.',
+        carrier: 'Blue Shield of California',
+        planName: 'Gold PPO 2000',
+        planType: 'PPO · Marketplace',
+        memberId: 'XJP-2841-04',
+        groupNum: 'G-4421',
+        network: 'PPO Plus · 4,200 providers',
+        effective: 'Jan 1, 2024',
+        renews: 'Dec 31, 2026',
+        premium: '$385 / mo',
+        costs: [
+          ['Deductible', '$2,000 / yr'],
+          ['Out-of-pocket max', '$7,500 / yr'],
+          ['Coinsurance', '20% after deductible'],
+        ],
+        copays: [
+          ['PCP visit', '$30'],
+          ['Specialist visit', '$50'],
+          ['Urgent care', '$75'],
+          ['ER visit', '$300'],
+          ['Generic Rx', '$10'],
+          ['Preferred brand Rx', '$45'],
+        ],
+        covered: [
+          'Preventive care covered at 100% in-network',
+          'Telehealth visits covered at 100%',
+          'Mental health and substance use covered at 100% after deductible',
+          'Maternity and newborn care covered at 100% after deductible',
+          'Out-of-network covered at 50% after deductible',
+        ],
+        providers: [
+          'Dr. Sarah Patel · Primary Care · UCLA Health · 2.1 mi',
+          'Dr. James Chen · Cardiology · Cedars-Sinai · 4.8 mi',
+        ],
+        providerLabel: 'PCP',
+        comparison: {
+          columns: ['Current · Gold PPO', 'Platinum PPO 0', 'Kaiser Gold HMO'],
+          rows: [
+            ['Premium',    '$385', '$480', '$310'],
+            ['Deductible', '$2,000', '$0',    '$1,500'],
+            ['OOP max',    '$7,500', '$4,500', '$5,500'],
+            ['Network',    'PPO Plus', 'PPO Plus · same', 'Smaller · 2 out'],
+            ['vs current', '—',      '+$95 / mo', '−$75 / mo'],
+          ],
+        },
+      },
+      dental: {
+        title: 'Dental Plan Details',
+        sub: 'Detailed coverage for your current dental plan, plus a brief comparison with one upgrade.',
+        carrier: 'Delta Dental of California',
+        planName: 'PPO Premier',
+        planType: 'PPO',
+        memberId: 'DDP-72611-04',
+        groupNum: 'G-7261',
+        network: 'Premier',
+        effective: 'Jan 1, 2024',
+        renews: 'Dec 31, 2026',
+        premium: '$42 / mo',
+        costs: [
+          ['Annual maximum', '$2,000'],
+          ['Deductible', '$50 / yr'],
+          ['Waiting period', 'None'],
+        ],
+        copays: [
+          ['Cleaning (twice yearly)', '100% covered'],
+          ['Exam &amp; X-rays', '100% covered'],
+          ['Fillings', '80% covered'],
+          ['Crowns / root canals', '50% covered'],
+          ['Orthodontia', 'Not included'],
+        ],
+        covered: [
+          'Two cleanings and exams per year at 100%',
+          'Fluoride treatment for adults at 100%',
+          'Fillings, extractions, and basic restorative at 80%',
+          'Crowns, bridges, dentures at 50% after deductible',
+          'No annual maximum waiver — counts toward the $2,000 cap',
+        ],
+        providers: [
+          'Dr. Maria Lopez · Mar Vista Dental Group · 0.8 mi',
+        ],
+        providerLabel: 'Dentist',
+        comparison: {
+          columns: ['Current · PPO Premier', 'Delta Dental Plus'],
+          rows: [
+            ['Premium',     '$42',  '$58'],
+            ['Annual max',  '$2,000', '$3,500'],
+            ['Major work',  '50%',   '60%'],
+            ['Orthodontia', 'Not included', '$2,000 lifetime'],
+            ['vs current',  '—',    '+$16 / mo'],
+          ],
+        },
+      },
+      vision: {
+        title: 'Vision Plan Details',
+        sub: 'Detailed coverage for your current vision plan, plus a brief comparison with one cheaper alternative.',
+        carrier: 'Vision Service Plan',
+        planName: 'Choice',
+        planType: 'Vision',
+        memberId: 'VSP-58420-04',
+        groupNum: 'G-5842',
+        network: 'VSP Choice nationwide',
+        effective: 'Jan 1, 2024',
+        renews: 'Dec 31, 2026',
+        premium: '$14 / mo',
+        costs: [
+          ['Exam frequency', 'Every 12 months'],
+          ['Frame allowance', '$200 every 12 months'],
+          ['Lens benefit', 'Standard included'],
+        ],
+        copays: [
+          ['Eye exam', '$10'],
+          ['Single-vision lenses', '$25'],
+          ['Bifocal lenses', '$25'],
+          ['Progressive lenses', '$25 + upgrade'],
+          ['Contact lenses (in lieu of glasses)', '$150 allowance'],
+        ],
+        covered: [
+          'One comprehensive eye exam every 12 months',
+          'Lenses included once per 12 months',
+          'Frames covered up to $200 every 12 months',
+          'Contact lens allowance of $150 per year (instead of frames)',
+          'Diabetic eye care included at no additional copay',
+        ],
+        providers: [
+          'LensCrafters Westside · Westfield Culver City · 3.2 mi',
+        ],
+        providerLabel: 'Optometrist',
+        comparison: {
+          columns: ['Current · VSP Choice', 'EyeMed Standard'],
+          rows: [
+            ['Premium',         '$14',          '$11'],
+            ['Exam copay',      '$10',          '$10'],
+            ['Frame allowance', '$200',         '$130'],
+            ['Network',         'VSP nationwide', 'LensCrafters / Pearle / Target Optical'],
+            ['vs current',      '—',            '−$3 / mo'],
+          ],
+        },
+      },
+    };
+
+    function openDetailsModal(plan) {
+      const d = PLAN_DETAILS[plan];
+      if (!d) return;
+      document.getElementById('detailsTitle').textContent = d.title;
+      document.getElementById('detailsSub').textContent = d.sub;
+      document.getElementById('detailsBadgeLabel').textContent = 'Active · ' + plan.charAt(0).toUpperCase() + plan.slice(1);
+
+      const summary = `
+        <div class="card" style="background:var(--surface-2);padding:18px;margin-bottom:20px;">
+          <div class="row-between mb-3" style="align-items:flex-start;">
+            <div>
+              <div style="font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">Carrier &middot; Plan</div>
+              <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;">${d.carrier} &middot; ${d.planName}</div>
+              <div class="text-sm text-muted">${d.planType}</div>
+            </div>
+            <div style="font-size:20px;font-weight:600;letter-spacing:-0.02em;">${d.premium}</div>
+          </div>
+          <div class="grid-3" style="gap:12px;">
+            <div class="info-field"><label>Member ID</label><div class="value">${d.memberId}</div></div>
+            <div class="info-field"><label>Group #</label><div class="value">${d.groupNum}</div></div>
+            <div class="info-field"><label>Network</label><div class="value">${d.network}</div></div>
+            <div class="info-field"><label>Effective</label><div class="value">${d.effective}</div></div>
+            <div class="info-field"><label>Renews</label><div class="value">${d.renews}</div></div>
+          </div>
+        </div>`;
+
+      const costs = `
+        <h3 style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Costs</h3>
+        <div class="grid-3" style="gap:12px;margin-bottom:20px;">
+          ${d.costs.map(([k,v]) => `<div class="info-field"><label>${k}</label><div class="value">${v}</div></div>`).join('')}
+        </div>`;
+
+      const copays = `
+        <h3 style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Copays &amp; Coverage</h3>
+        <table class="table" style="margin-bottom:20px;">
+          <tbody>
+            ${d.copays.map(([k,v]) => `<tr><td>${k}</td><td style="text-align:right;font-weight:500;">${v}</td></tr>`).join('')}
+          </tbody>
+        </table>`;
+
+      const covered = `
+        <h3 style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">What's Covered</h3>
+        <ul style="list-style:none;padding:0;margin-bottom:20px;">
+          ${d.covered.map(c => `<li style="display:flex;gap:10px;padding:6px 0;font-size:14px;line-height:1.5;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg><span>${c}</span></li>`).join('')}
+        </ul>`;
+
+      const providers = d.providers && d.providers.length ? `
+        <h3 style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">In-Network Providers on File</h3>
+        <ul style="list-style:none;padding:0;margin-bottom:24px;">
+          ${d.providers.map(p => `<li style="padding:8px 12px;background:var(--surface-2);border-radius:8px;margin-bottom:6px;font-size:14px;">${p}</li>`).join('')}
+        </ul>` : '';
+
+      const providerLabel = d.providerLabel || 'provider';
+      const manageButtons = [
+        ['File a claim',           `${d.planName} claim form would open. (Demo)`],
+        ['View claims history',    `${d.planName} claims history would open. (Demo)`],
+        [`Update ${providerLabel}`,`${providerLabel} change form would open. (Demo)`],
+        ['Add a dependent',        'Dependent enrollment would open. (Demo)'],
+        ['Replace member card',    `${d.planName} card replacement would be ordered. (Demo)`],
+        ['Update payment method',  'Payment method update would open. (Demo)'],
+      ];
+      const management = `
+        <h3 style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Manage Your Plan</h3>
+        <div class="grid-3" style="gap:8px;margin-bottom:20px;">
+          ${manageButtons.map(([label, msg]) =>
+            `<button class="btn btn-secondary" type="button" style="font-size:13px;padding:10px 12px;justify-content:flex-start;" onclick="alert(${JSON.stringify(msg)});">${label}</button>`
+          ).join('')}
+        </div>`;
+
+      const actions = `
+        <div class="row-between mt-2">
+          <span class="text-sm text-muted">Most actions take effect immediately. Card replacements arrive in 5–7 days.</span>
+          <button class="btn btn-primary" type="button" onclick="closeDetailsModal()">Close</button>
+        </div>`;
+
+      document.getElementById('detailsBody').innerHTML =
+        summary + costs + copays + covered + providers + management + actions;
+
+      document.getElementById('detailsModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetailsModal() {
+      document.getElementById('detailsModal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function openInsuranceCardModal(plan) {
+      const titleByPlan = { health: 'Health Member Card', dental: 'Dental Member Card', vision: 'Vision Member Card' };
+      const badgeByPlan = { health: 'Health · BlueShield', dental: 'Dental · Delta Dental', vision: 'Vision · VSP' };
+      document.getElementById('cardModalTitle').textContent = titleByPlan[plan] || 'Member Card';
+      document.getElementById('cardModalBadge').textContent = badgeByPlan[plan] || 'Member';
+      document.querySelectorAll('#cardModal .doc-card[data-plan]').forEach(c => {
+        c.hidden = c.dataset.plan !== plan;
+      });
+      const cu = getCitizen();
+      const fullName = cu ? `${cu.firstName.toUpperCase()} ${cu.lastName.toUpperCase()}` : 'MEMBER NAME';
+      document.querySelectorAll('#cardModal [data-name]').forEach(el => { el.textContent = fullName; });
+      document.getElementById('cardModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeInsuranceCardModal() {
+      document.getElementById('cardModal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        const details = document.getElementById('detailsModal');
+        if (details && !details.hidden) { closeDetailsModal(); return; }
+        const card = document.getElementById('cardModal');
+        if (card && !card.hidden) { closeInsuranceCardModal(); return; }
+        const modal = document.getElementById('compareModal');
+        if (modal && !modal.hidden) closeCompareModal();
+      }
+    });
+  </script>
+</body>
+</html>

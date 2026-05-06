@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="dashboard">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-title">
+          <h1 id="welcome">Welcome back</h1>
+          <p id="welcomeSub">Here's your government services dashboard.</p>
+        </div>
+      </div>
+
+      <div class="chatbot-inline" aria-live="polite">
+        <div class="chatbot-header">
+          <div class="chatbot-avatar" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+          </div>
+          <div class="chatbot-header-text">
+            <div class="chatbot-title">ePluribus AI</div>
+          </div>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chatbot-suggestions" id="chatbotSuggestions">
+          <button class="chatbot-suggestion" onclick="sendSuggestion('How do I renew my license?')">Renew license</button>
+          <button class="chatbot-suggestion" onclick="sendSuggestion('When is my next election?')">Next election</button>
+          <button class="chatbot-suggestion" onclick="sendSuggestion('Where do I report a pothole?')">Report a pothole</button>
+          <button class="chatbot-suggestion" onclick="sendSuggestion('What benefits do I qualify for?')">My benefits</button>
+        </div>
+        <form class="chatbot-input" onsubmit="sendChat(event)">
+          <input type="text" id="chatbotInput" placeholder="Ask about taxes, licenses, voting, benefits..." autocomplete="off">
+          <button type="submit" aria-label="Send">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+        <div class="chatbot-disclaimer">Demo assistant · responses are simulated, not real AI</div>
+      </div>
+
+      <h2 class="text-xl mb-4">Quick Services</h2>
+      <div class="services mb-6">
+        <a href="license.html" class="service-card">
+          <div class="service-icon blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M15 10h3M15 14h3M6 16c.5-1.5 2-2 3-2s2.5.5 3 2"/></svg>
+          </div>
+          <h3>Digital License</h3>
+          <p>View, share, or verify your ID.</p>
+        </a>
+        <a href="taxes.html" class="service-card">
+          <div class="service-icon red">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18l3-2 3 2 3-2 3 2 3-2V3"/><path d="M9 8h8M9 12h8M9 16h5"/></svg>
+          </div>
+          <h3>State Taxes</h3>
+          <p>2025 return is pre-filled and ready.</p>
+        </a>
+        <a href="healthcare.html" class="service-card">
+          <div class="service-icon green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+          </div>
+          <h3>Health Insurance</h3>
+          <p>3 plans active. Open enrollment Nov 1.</p>
+        </a>
+        <a href="welfare.html" class="service-card">
+          <div class="service-icon gold">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="1"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Benefits</h3>
+          <p>SNAP, TANF, WIC, unemployment.</p>
+        </a>
+        <a href="business.html" class="service-card">
+          <div class="service-icon purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+          </div>
+          <h3>Business</h3>
+          <p>1 active LLC. Sales tax due May 31.</p>
+        </a>
+        <a href="engage.html" class="service-card">
+          <div class="service-icon rose">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="9" rx="1"/><path d="M8 6h8M8 9h5"/><path d="M12 12v10"/></svg>
+          </div>
+          <h3>Get Involved</h3>
+          <p>5 petitions and 4 town halls match your interests.</p>
+        </a>
+        <a href="vote.html" class="service-card">
+          <div class="service-icon indigo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12l3 3 5-6"/></svg>
+          </div>
+          <h3>Voting</h3>
+          <p>Registered. Next election Jun 4.</p>
+        </a>
+        <a href="jobs.html" class="service-card">
+          <div class="service-icon teal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+          </div>
+          <h3>Government Jobs</h3>
+          <p>23 open roles match your profile.</p>
+        </a>
+        <a href="repairs.html" class="service-card">
+          <div class="service-icon amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6.4 6.4L3 18l3 3 5.3-5.3a4.5 4.5 0 0 0 6.4-6.4l-3.5 3.5-2.5-2.5z"/></svg>
+          </div>
+          <h3>Report It</h3>
+          <p>Pothole, light, sidewalk, or service issue.</p>
+        </a>
+        <a href="tickets.html" class="service-card">
+          <div class="service-icon slate">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 5v2M14 11v2M14 17v2"/></svg>
+          </div>
+          <h3>Tickets &amp; Passes</h3>
+          <p>Metro pass, parks, and museum entry.</p>
+        </a>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Recent Activity</div>
+            <a class="card-link" href="#">View all</a>
+          </div>
+          <ul class="list">
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(5,150,105,0.12);color:var(--success);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">2024 state tax return accepted</div>
+                <div class="list-item-sub">Refund of $1,247 issued via direct deposit</div>
+              </div>
+              <div class="list-item-meta">3 days ago</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">License presented at TSA — LAX</div>
+                <div class="list-item-sub">Selective disclosure: name, photo, age over 18</div>
+              </div>
+              <div class="list-item-meta">Apr 28</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(217,119,6,0.12);color:var(--warning);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">Quarterly sales tax filing due May 31</div>
+                <div class="list-item-sub">Mitchell Design LLC — pre-filled and ready</div>
+              </div>
+              <div class="list-item-meta">28 days</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(5,150,105,0.12);color:var(--success);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">May insurance premium auto-paid</div>
+                <div class="list-item-sub">$441 · BlueShield, Delta Dental, VSP · Bank ···· 4408</div>
+              </div>
+              <div class="list-item-meta">May 1</div>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">Identity verified with ePluribus</div>
+                <div class="list-item-sub">Driver's license matched to DMV record</div>
+              </div>
+              <div class="list-item-meta">Today</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">For You</div>
+          </div>
+          <ul class="list">
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(11,61,145,0.1);color:var(--primary);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18l3-2 3 2 3-2 3 2 3-2V3"/><path d="M9 8h8M9 12h8M9 16h5"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">File 2025 state taxes</div>
+                <div class="list-item-sub">Pre-filled from W-2 and 1099 records</div>
+              </div>
+              <a class="btn btn-primary" style="font-size:13px;padding:7px 12px;" href="taxes.html">Start</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(240,181,66,0.18);color:#b08020;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">You qualify for LIHEAP</div>
+                <div class="list-item-sub">Estimated assistance: $480/year</div>
+              </div>
+              <a class="btn btn-primary" style="font-size:13px;padding:7px 12px;" href="welfare.html">Apply</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(5,150,105,0.12);color:var(--success);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">Compare 2027 health plans</div>
+                <div class="list-item-sub">Open enrollment opens Nov 1 · review side-by-side</div>
+              </div>
+              <a class="btn btn-primary" style="font-size:13px;padding:7px 12px;" href="healthcare.html">Compare</a>
+            </li>
+            <li class="list-item">
+              <div class="list-item-icon" style="background:rgba(139,92,246,0.12);color:#7c3aed;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">Renew your DBA</div>
+                <div class="list-item-sub">Mitchell Design — expires Jul 12</div>
+              </div>
+              <a class="btn btn-primary" style="font-size:13px;padding:7px 12px;" href="business.html">Renew</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('welcome').textContent = `Welcome back, ${u.firstName}.`;
+      document.getElementById('welcomeSub').textContent =
+        `Here's your government services dashboard.`;
+    }
+
+    // === ePluribus AI chatbot ===
+    // Each response can include plain text (answer), a tail link (link), and
+    // optional rich content (rich) that renders inline widgets — cards, forms,
+    // resource lists, action button rows — directly in the chat thread.
+
+    // ---------- Widget builders ----------
+    function chatCard({ title, badge, fields, actions, accent }) {
+      const card = document.createElement('div');
+      card.className = 'chatbot-card';
+      if (accent) card.classList.add('chatbot-card-accent');
+      let html = '';
+      if (title || badge) {
+        html += '<div class="chatbot-card-header">';
+        if (title) html += `<div class="chatbot-card-title">${title}</div>`;
+        if (badge) html += `<span class="badge ${badge.cls || 'badge-info'}"><span class="dot"></span>${badge.text}</span>`;
+        html += '</div>';
+      }
+      if (fields && fields.length) {
+        html += '<div class="chatbot-card-fields">';
+        fields.forEach(([l, v]) => { html += `<div><label>${l}</label><strong>${v}</strong></div>`; });
+        html += '</div>';
+      }
+      if (actions && actions.length) {
+        html += '<div class="chatbot-card-actions">';
+        actions.forEach((a, i) => {
+          const cls = a.primary ? 'btn btn-primary' : 'btn btn-secondary';
+          html += `<button class="${cls}" data-i="${i}" type="button">${a.label}</button>`;
+        });
+        html += '</div>';
+      }
+      card.innerHTML = html;
+      if (actions) {
+        actions.forEach((a, i) => {
+          const btn = card.querySelector(`[data-i="${i}"]`);
+          if (btn && a.onclick) btn.onclick = () => a.onclick(card);
+        });
+      }
+      return card;
+    }
+
+    function chatActions(items) {
+      const wrap = document.createElement('div');
+      wrap.className = 'chatbot-quick-actions';
+      items.forEach(a => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chatbot-quick-action';
+        b.textContent = a.label;
+        b.onclick = () => a.onclick();
+        wrap.appendChild(b);
+      });
+      return wrap;
+    }
+
+    function chatResources(items) {
+      const wrap = document.createElement('div');
+      wrap.className = 'chatbot-resource';
+      items.forEach(item => {
+        const a = document.createElement('a');
+        a.href = item.url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'chatbot-resource-item';
+        a.innerHTML = `
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/></svg></div>
+          <div class="text">
+            <div class="title">${item.title}</div>
+            <div class="desc">${item.desc}</div>
+          </div>
+          <div class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
+        `;
+        wrap.appendChild(a);
+      });
+      return wrap;
+    }
+
+    function appendRich(node) {
+      const messages = document.getElementById('chatbotMessages');
+      messages.appendChild(node);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function botSay(text, link) {
+      appendMessage('bot', text, link || null);
+    }
+
+    // ---------- Inline service flows ----------
+    function inlineRenew() {
+      botSay("Sure — let's renew. Pick a term and confirm:");
+      const form = document.createElement('div');
+      form.className = 'chatbot-card chatbot-form';
+      const today = new Date();
+      const currExp = new Date(u.expires + 'T00:00:00');
+      const base = currExp > today ? currExp : today;
+      form.innerHTML = `
+        <div class="chatbot-form-row">
+          <label>Renewal term</label>
+          <select data-field="term">
+            <option value="4">4-year Standard ($36.00)</option>
+            <option value="8">8-year REAL ID ($68.00)</option>
+          </select>
+        </div>
+        <div class="chatbot-form-row checkbox">
+          <label><input type="checkbox" data-field="vision">My vision meets state requirements (corrective lenses if applicable)</label>
+        </div>
+        <div class="chatbot-form-row checkbox">
+          <label><input type="checkbox" data-field="legal">No medical or legal disqualifications</label>
+        </div>
+        <div class="chatbot-form-actions">
+          <button class="btn btn-primary" data-submit type="button">Pay &amp; submit</button>
+          <button class="btn btn-ghost" data-cancel type="button">Cancel</button>
+        </div>
+      `;
+      form.querySelector('[data-submit]').onclick = () => {
+        if (!form.querySelector('[data-field="vision"]').checked || !form.querySelector('[data-field="legal"]').checked) {
+          botSay('Please complete both attestations to submit.');
+          return;
+        }
+        const term = parseInt(form.querySelector('[data-field="term"]').value, 10);
+        const newExp = new Date(base);
+        newExp.setFullYear(newExp.getFullYear() + term);
+        const iso = newExp.toISOString().split('T')[0];
+        u.expires = iso;
+        u.issued = new Date().toISOString().split('T')[0];
+        setCitizen(u);
+        form.remove();
+        botSay(`Done — renewed until ${formatDateLong(iso)}. Physical card mails in 5–7 business days.`);
+        appendRich(chatCard({
+          title: 'Renewal confirmed',
+          badge: { cls: 'badge-success', text: 'Active' },
+          fields: [
+            ['New expiry', formatDateLong(iso)],
+            ['Term', term + ' years'],
+            ['Fee paid', term === 8 ? '$68.00' : '$36.00'],
+            ['Payment', 'Bank ···· 4408']
+          ]
+        }));
+      };
+      form.querySelector('[data-cancel]').onclick = () => {
+        form.remove();
+        botSay('Cancelled — anything else?');
+      };
+      appendRich(form);
+    }
+
+    function inlineUpdateAddress() {
+      botSay('What\'s your new address?');
+      const form = document.createElement('div');
+      form.className = 'chatbot-card chatbot-form';
+      form.innerHTML = `
+        <div class="chatbot-form-row">
+          <label>Street address</label>
+          <input type="text" data-field="addr" value="${u.address}">
+        </div>
+        <div class="chatbot-form-row">
+          <label>City</label>
+          <input type="text" data-field="city" value="${u.city}">
+        </div>
+        <div class="chatbot-form-row">
+          <label>ZIP</label>
+          <input type="text" data-field="zip" value="${u.zip}" maxlength="10">
+        </div>
+        <div class="chatbot-form-actions">
+          <button class="btn btn-primary" data-submit type="button">Save</button>
+          <button class="btn btn-ghost" data-cancel type="button">Cancel</button>
+        </div>
+      `;
+      form.querySelector('[data-submit]').onclick = () => {
+        u.address = form.querySelector('[data-field="addr"]').value.trim() || u.address;
+        u.city = form.querySelector('[data-field="city"]').value.trim() || u.city;
+        u.zip = form.querySelector('[data-field="zip"]').value.trim() || u.zip;
+        setCitizen(u);
+        form.remove();
+        botSay(`Updated. Your license now lists ${u.address}, ${u.city}, ${u.state} ${u.zip}. The DMV record will refresh within 24 hours.`);
+      };
+      form.querySelector('[data-cancel]').onclick = () => {
+        form.remove();
+        botSay('No changes made.');
+      };
+      appendRich(form);
+    }
+
+    function inlineReport() {
+      botSay("Got it — what kind of issue?");
+      const cats = ['Pothole', 'Street light', 'Graffiti', 'Tree or branch', 'Water main', 'Sidewalk', 'Trash', 'Other'];
+      appendRich(chatActions(cats.map(c => ({ label: c, onclick: () => inlineReportFor(c) }))));
+    }
+
+    function inlineReportFor(category) {
+      botSay(`${category} report — where is it?`);
+      const form = document.createElement('div');
+      form.className = 'chatbot-card chatbot-form';
+      form.innerHTML = `
+        <div class="chatbot-form-row">
+          <label>Location</label>
+          <input type="text" data-field="loc" placeholder="Street address or nearest intersection">
+        </div>
+        <div class="chatbot-form-row">
+          <label>Description</label>
+          <textarea data-field="desc" rows="2" placeholder="Size, severity, any hazards…"></textarea>
+        </div>
+        <div class="chatbot-form-row">
+          <label>Severity</label>
+          <select data-field="sev">
+            <option>Cosmetic — can wait</option>
+            <option>Inconvenient — affects daily use</option>
+            <option>Hazard — could injure</option>
+            <option>Emergency — danger to life</option>
+          </select>
+        </div>
+        <div class="chatbot-form-actions">
+          <button class="btn btn-primary" data-submit type="button">Submit report</button>
+          <button class="btn btn-ghost" data-cancel type="button">Cancel</button>
+        </div>
+      `;
+      form.querySelector('[data-submit]').onclick = () => {
+        const loc = form.querySelector('[data-field="loc"]').value.trim();
+        const desc = form.querySelector('[data-field="desc"]').value.trim();
+        if (!loc || !desc) {
+          botSay('Please add a location and description before submitting.');
+          return;
+        }
+        const id = '#311-' + Math.floor(4500 + Math.random() * 99) + '-' + (u ? u.state : 'XX');
+        const sev = form.querySelector('[data-field="sev"]').value;
+        form.remove();
+        botSay(`Routed to the right city department. You'll get text updates as crews respond.`);
+        appendRich(chatCard({
+          title: 'Report submitted',
+          badge: { cls: 'badge-success', text: 'Filed' },
+          fields: [
+            ['Type', category],
+            ['Location', loc],
+            ['Severity', sev.split(' — ')[0]],
+            ['Tracking ID', id]
+          ]
+        }));
+      };
+      form.querySelector('[data-cancel]').onclick = () => {
+        form.remove();
+        botSay('Cancelled.');
+      };
+      appendRich(form);
+    }
+
+    function inlineMailBallot() {
+      botSay('Mail ballot request submitted to the county clerk.');
+      appendRich(chatCard({
+        title: 'Mail ballot · Jun 4 Primary',
+        badge: { cls: 'badge-success', text: 'Requested' },
+        fields: [
+          ['Mailing to', `${u.address}, ${u.city}, ${u.state} ${u.zip}`],
+          ['Mails by', 'May 6, 2026'],
+          ['Return by', 'Jun 4 (postmarked)'],
+          ['Drop boxes', '14 in district']
+        ]
+      }));
+    }
+
+    function inlineSampleBallot() {
+      botSay(`Here's a quick look at your Jun 4 ballot — full version on the Voting page.`);
+      appendRich(chatCard({
+        title: 'Sample ballot · Jun 4, 2026',
+        fields: [
+          ['Federal', 'US Senate · US House CA-37'],
+          ['State', 'State Assembly · State Senate'],
+          ['Local', 'Mayor · 4 council seats'],
+          ['Measures', '2 statewide · 1 local']
+        ],
+        actions: [{ label: 'Open full ballot', onclick: () => location.href = 'vote.html' }]
+      }));
+    }
+
+    function inlineFileTaxes() {
+      const t = STATE_TAX[u.state] || STATE_TAX.default;
+      if (!t.hasIncomeTax) {
+        botSay(`${u.stateName} has no state income tax — there's nothing to file at the state level.`);
+        return;
+      }
+      botSay(`Filed your 2025 ${u.stateName} state return. Refund of ${formatCurrency(1247)} will direct-deposit in 5–10 business days.`);
+      appendRich(chatCard({
+        title: '2025 state tax return',
+        badge: { cls: 'badge-success', text: 'Filed' },
+        fields: [
+          ['State', u.stateName],
+          ['Refund', formatCurrency(1247)],
+          ['Method', 'Direct deposit'],
+          ['Confirmation', 'CIV-' + Date.now().toString().slice(-8)]
+        ]
+      }));
+    }
+
+    function inlinePetitions() {
+      botSay('Here are 3 active petitions matching your interests. Sign right here.');
+      const petitions = [
+        { title: 'Lower the speed limit on Sepulveda Blvd', tag: 'Transit', count: '4,210 / 5,000' },
+        { title: 'Require solar on new construction', tag: 'Climate · Housing', count: '9,820 / 10,000' },
+        { title: 'Restore after-school program funding', tag: 'Schools', count: '1,876 / 3,000' }
+      ];
+      petitions.forEach(p => {
+        appendRich(chatCard({
+          title: p.title,
+          badge: { cls: 'badge-info', text: p.tag },
+          fields: [['Signatures', p.count], ['Closes', 'Within 30 days']],
+          actions: [{
+            label: 'Sign',
+            primary: true,
+            onclick: (root) => {
+              const btn = root.querySelector('[data-i="0"]');
+              btn.textContent = '✓ Signed';
+              btn.disabled = true;
+              btn.classList.remove('btn-primary');
+              btn.classList.add('btn-secondary');
+              botSay(`Signed: "${p.title}" — your signature was added to the campaign.`);
+            }
+          }]
+        }));
+      });
+    }
+
+    function inlineApplyJob() {
+      botSay('Submitted your profile to the top-matched role.');
+      appendRich(chatCard({
+        title: 'Senior UX Designer · Dept. of Technology',
+        badge: { cls: 'badge-success', text: 'Applied' },
+        fields: [
+          ['Salary', '$118k – $146k'],
+          ['Type', 'Civil service · hybrid'],
+          ['Confirmation', 'JOB-' + Date.now().toString().slice(-8)],
+          ['Next step', 'HR review · ~5 days']
+        ]
+      }));
+    }
+
+    function inlineApplyBenefit(name, value) {
+      botSay(`Started your ${name} application — pre-filled from your existing records.`);
+      appendRich(chatCard({
+        title: name + ' application',
+        badge: { cls: 'badge-info', text: 'Pre-filled' },
+        fields: [
+          ['Estimated benefit', value],
+          ['Required docs', 'None — already on file'],
+          ['Decision in', '3–5 business days']
+        ],
+        actions: [{ label: 'Submit', primary: true, onclick: (root) => {
+          const btn = root.querySelector('[data-i="0"]');
+          btn.textContent = '✓ Submitted';
+          btn.disabled = true;
+          btn.classList.remove('btn-primary');
+          btn.classList.add('btn-secondary');
+          botSay(`Submitted. You'll get a determination within a week.`);
+        }}]
+      }));
+    }
+
+    // ---------- Response table ----------
+    const CHATBOT_RESPONSES = [
+      { keywords: ['hi','hello','hey','what can you do','help me','help'],
+        answer: () => `Hi${u ? ' ' + u.firstName : ''}! I can answer questions and run things directly here — renew your license, file a report, sign petitions, request a mail ballot, file taxes, and more. What do you need?`,
+        link: null },
+
+      { keywords: ['license','dmv','renew','driver','my id','expires','expir'],
+        answer: () => `Your driver's license expires ${formatDate(u.expires)}. We can handle renewal or address updates right here.`,
+        rich: () => appendRich(chatCard({
+          title: "Driver's license",
+          badge: { cls: 'badge-success', text: 'Active' },
+          fields: [
+            ['Expires', formatDateLong(u.expires)],
+            ['License #', u.licenseNumber],
+            ['Class', u.class],
+            ['Issued', formatDateLong(u.issued)]
+          ],
+          actions: [
+            { label: 'Renew online', primary: true, onclick: inlineRenew },
+            { label: 'Update address', onclick: inlineUpdateAddress }
+          ]
+        })) },
+
+      { keywords: ['tax','refund','filing','return','irs','w-2','1099'],
+        answer: () => {
+          const t = STATE_TAX[u.state] || STATE_TAX.default;
+          return t.hasIncomeTax
+            ? `Your 2025 ${u.stateName} state return is pre-filled. Estimated refund: ${formatCurrency(1247)}.`
+            : `${u.stateName} doesn't have a state income tax. Federal returns are filed with the IRS at irs.gov.`;
+        },
+        rich: () => {
+          const t = STATE_TAX[u.state] || STATE_TAX.default;
+          if (!t.hasIncomeTax) {
+            appendRich(chatResources([
+              { title: 'IRS — Federal returns', desc: 'irs.gov · Free File for income under $84k', url: 'https://www.irs.gov' }
+            ]));
+            return;
+          }
+          appendRich(chatCard({
+            title: '2025 state tax return',
+            badge: { cls: 'badge-info', text: 'Pre-filled' },
+            fields: [
+              ['State', u.stateName],
+              ['Refund est.', formatCurrency(1247)],
+              ['Method', 'Direct deposit'],
+              ['Status', 'Ready to file']
+            ],
+            actions: [
+              { label: 'File now', primary: true, onclick: inlineFileTaxes },
+              { label: 'Open full return', onclick: () => location.href = 'taxes.html' }
+            ]
+          }));
+        } },
+
+      { keywords: ['vote','voting','election','ballot','register to vote','polling','primary'],
+        answer: () => `You're registered and active. Next election: Jun 4, 2026 (Primary).`,
+        rich: () => appendRich(chatCard({
+          title: 'Jun 4, 2026 · Primary',
+          badge: { cls: 'badge-warning', text: '32 days' },
+          fields: [
+            ['Polling place', 'Mar Vista Rec Ctr'],
+            ['Vote-by-mail', 'Opens May 6'],
+            ['Early voting', 'May 25 – Jun 3'],
+            ['Drop boxes', '14 in district']
+          ],
+          actions: [
+            { label: 'Request mail ballot', primary: true, onclick: inlineMailBallot },
+            { label: 'View sample ballot', onclick: inlineSampleBallot }
+          ]
+        })) },
+
+      { keywords: ['health','insurance','plan','premium','dental','vision','open enrollment','copay','coverage'],
+        answer: () => `You have 3 active plans. Open enrollment for 2027 starts Nov 1.`,
+        rich: () => appendRich(chatCard({
+          title: 'Active plans',
+          badge: { cls: 'badge-success', text: '3 active' },
+          fields: [
+            ['Health', 'BlueShield Gold PPO · $385/mo'],
+            ['Dental', 'Delta PPO Premier · $42/mo'],
+            ['Vision', 'VSP Choice · $14/mo'],
+            ['Renews', 'Dec 31, 2026 (auto)']
+          ],
+          actions: [{ label: 'Open insurance', onclick: () => location.href = 'healthcare.html' }]
+        })) },
+
+      { keywords: ['benefit','snap','calfresh','welfare','tanf','wic','unemployment','liheap','eitc','assistance','food stamp'],
+        answer: () => `You're enrolled in SNAP and LIHEAP. You also qualify for 3 more programs — start any application here.`,
+        rich: () => {
+          const eligible = [
+            { name: 'EITC', value: 'Est. $1,240 credit' },
+            { name: 'Lifeline', value: '$9.25/mo savings' },
+            { name: 'CalWORKs', value: 'Varies (need check)' }
+          ];
+          eligible.forEach(b => {
+            appendRich(chatCard({
+              title: b.name,
+              badge: { cls: 'badge-info', text: 'You qualify' },
+              fields: [['Estimate', b.value]],
+              actions: [{ label: 'Apply', primary: true, onclick: () => inlineApplyBenefit(b.name, b.value) }]
+            }));
+          });
+        } },
+
+      { keywords: ['job','employment','career','hiring','application','government job','civil service','open role'],
+        answer: () => `23 government roles match your profile. Top match below — apply with one click.`,
+        rich: () => appendRich(chatCard({
+          title: 'Senior UX Designer',
+          badge: { cls: 'badge-info', text: 'Top match' },
+          fields: [
+            ['Department', 'Dept. of Technology'],
+            ['Salary', '$118k – $146k'],
+            ['Type', 'Hybrid · 2 days onsite'],
+            ['Posted', '3 days ago']
+          ],
+          actions: [
+            { label: 'Apply with profile', primary: true, onclick: inlineApplyJob },
+            { label: 'See all 23', onclick: () => location.href = 'jobs.html' }
+          ]
+        })) },
+
+      { keywords: ['pothole','311','report','street light','streetlight','graffiti','trash','sidewalk','tree','water main','broken'],
+        answer: () => `I can file a 311 report right here.`,
+        rich: () => appendRich(chatActions([{ label: 'Start a report', onclick: inlineReport }])) },
+
+      { keywords: ['metro','transit','park pass','park','museum','tap card','tap','ticket','pass','annual pass'],
+        answer: () => `Here's a snapshot of your passes.`,
+        rich: () => appendRich(chatCard({
+          title: 'Your passes',
+          badge: { cls: 'badge-success', text: '4 active' },
+          fields: [
+            ['TAP balance', '$28.50'],
+            ['State Parks', 'Renews Mar 14, 2027'],
+            ['LACMA', 'Member +1'],
+            ['Pool Pass', 'Expires Jun 30 ⚠']
+          ],
+          actions: [{ label: 'Manage passes', onclick: () => location.href = 'tickets.html' }]
+        })) },
+
+      { keywords: ['petition','town hall','engage','community','involved','civic engagement','council','sign'],
+        answer: () => `5 petitions match your interests.`,
+        rich: () => appendRich(chatActions([{ label: 'Show petitions to sign', onclick: inlinePetitions }])) },
+
+      { keywords: ['business','llc','sales tax','dba','corporation','incorporate','ein'],
+        answer: () => `Mitchell Design LLC is active. Quarterly sales tax filing is due May 31. DBA renews Jul 12.`,
+        link: { href: 'business.html', label: 'Business' } },
+
+      // ---------- Federal services — external resource cards ----------
+      { keywords: ['passport'],
+        answer: () => `Passports are federal. Here are the right places to start:`,
+        rich: () => appendRich(chatResources([
+          { title: 'Travel.State.Gov · Apply or renew', desc: 'travel.state.gov · official application portal', url: 'https://travel.state.gov/content/travel/en/passports.html' },
+          { title: 'USPS Passport Acceptance Facility', desc: 'Find a location near you', url: 'https://tools.usps.com/find-location.htm?location-type=facility' }
+        ])) },
+
+      { keywords: ['social security','ssn','medicare card','medicare'],
+        answer: () => `Social Security and Medicare are federal. Direct links:`,
+        rich: () => appendRich(chatResources([
+          { title: 'My Social Security · ssa.gov', desc: 'Check earnings, apply for benefits, replacement card · 1-800-772-1213', url: 'https://www.ssa.gov/myaccount/' },
+          { title: 'Medicare.gov · Enrollment', desc: 'Original Medicare, Advantage, Part D · 1-800-633-4227', url: 'https://www.medicare.gov' }
+        ])) },
+
+      { keywords: ['immigration','visa','green card','citizenship','naturalization','uscis'],
+        answer: () => `Immigration is handled federally by USCIS. Resources below — ePluribus can also connect you with state legal aid.`,
+        rich: () => appendRich(chatResources([
+          { title: 'USCIS · Forms & case status', desc: 'uscis.gov · 1-800-375-5283', url: 'https://www.uscis.gov' },
+          { title: 'State legal aid · Get Involved', desc: 'Find pro-bono attorneys in your district', url: 'engage.html' }
+        ])) },
+
+      { keywords: ['emergency','911','urgent','crisis','suicide','danger'],
+        answer: () => `ePluribus doesn't dispatch emergency services — these do:`,
+        rich: () => appendRich(chatResources([
+          { title: '911 · Police, fire, medical', desc: 'Life-threatening emergencies only', url: 'tel:911' },
+          { title: '988 · Suicide & Crisis Lifeline', desc: 'Free, confidential, 24/7 · call or text', url: 'tel:988' },
+          { title: 'Local non-emergency police', desc: 'Lookup by ZIP', url: 'https://www.usa.gov/local-governments' }
+        ])) },
+    ];
+
+    function findResponse(text) {
+      const t = text.toLowerCase();
+      for (const r of CHATBOT_RESPONSES) {
+        if (r.keywords.some(k => t.includes(k))) return r;
+      }
+      return {
+        answer: () => `I'm not sure about that one. I can run renewals, file reports, request ballots, sign petitions, file taxes, apply for benefits or jobs, and route to .gov resources. Try one of the suggestions or rephrase.`,
+        link: null
+      };
+    }
+
+    function appendMessage(role, text, link) {
+      const messages = document.getElementById('chatbotMessages');
+      const msg = document.createElement('div');
+      msg.className = `chatbot-message ${role}`;
+      msg.textContent = text;
+      if (link) {
+        msg.appendChild(document.createTextNode(' '));
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.textContent = link.label + ' →';
+        msg.appendChild(a);
+      }
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function appendTyping() {
+      const messages = document.getElementById('chatbotMessages');
+      const t = document.createElement('div');
+      t.className = 'chatbot-typing';
+      t.id = 'chatbotTyping';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(t);
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function removeTyping() {
+      const t = document.getElementById('chatbotTyping');
+      if (t) t.remove();
+    }
+
+    function sendChat(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const input = document.getElementById('chatbotInput');
+      const text = input.value.trim();
+      if (!text) return;
+      appendMessage('user', text);
+      input.value = '';
+      const suggestions = document.getElementById('chatbotSuggestions');
+      if (suggestions) suggestions.hidden = true;
+      appendTyping();
+      setTimeout(() => {
+        removeTyping();
+        const r = findResponse(text);
+        appendMessage('bot', typeof r.answer === 'function' ? r.answer() : r.answer, r.link);
+        if (r.rich) {
+          try { r.rich(); } catch (err) { console.error(err); }
+        }
+      }, 600 + Math.random() * 400);
+    }
+
+    function sendSuggestion(text) {
+      document.getElementById('chatbotInput').value = text;
+      sendChat();
+    }
+
+    // Initial greeting fires immediately on page load
+    const greeting = u
+      ? `Hi ${u.firstName}! What can I help with?`
+      : `Hi! What can I help with?`;
+    appendMessage('bot', greeting);
+
+    // Park the cursor in the chat input so the user can type right away.
+    document.getElementById('chatbotInput').focus();
+  </script>
+</body>
+</html>

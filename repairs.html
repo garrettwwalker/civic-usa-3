@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report It — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="repairs">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="disclaimer">
+        ⓘ <strong>Demo data:</strong> Reports, statuses, and response times shown are simulated.
+      </div>
+
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Report It · Municipal Services</h1>
+          <p id="repairsSub">Report a pothole, broken light, or service issue. The right department gets it the moment you submit.</p>
+        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('newReport').scrollIntoView({behavior:'smooth'});">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          New report
+        </button>
+      </div>
+
+      <div class="grid-4 mb-6">
+        <div class="stat">
+          <div class="stat-label">Your active reports</div>
+          <div class="stat-value">2</div>
+          <div class="stat-trend">1 in progress · 1 assigned</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Resolved (last 30 days)</div>
+          <div class="stat-value">3</div>
+          <div class="stat-trend up">Avg 3.2 days to fix</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Citywide reports today</div>
+          <div class="stat-value">847</div>
+          <div class="stat-trend">↑ 12% vs typical Sunday</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Within your district</div>
+          <div class="stat-value">29</div>
+          <div class="stat-trend">11 in progress</div>
+        </div>
+      </div>
+
+      <h2 class="text-xl mb-4">Report a Problem</h2>
+      <div class="grid-4 mb-6" id="newReport">
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Pothole');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <h3>Pothole</h3>
+          <p>Damaged road, crumbling asphalt.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Street light');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-2 7.5V14h4v-3.5A4 4 0 0 0 12 3zM10 17h4M11 21h2"/></svg></div>
+          <h3>Street Light</h3>
+          <p>Out, flickering, or knocked over.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Trash &amp; recycling');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1 13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM3 7h18M9 4h6v3H9z"/></svg></div>
+          <h3>Trash &amp; Recycling</h3>
+          <p>Missed pickup, illegal dumping.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Graffiti');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l-3 3-2-2 3-3M14 17l5-5 4 4-5 5zM4 21l3-9 5 5z"/></svg></div>
+          <h3>Graffiti</h3>
+          <p>Tagging on public or visible property.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Tree or branch');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L7 9h2L5 15h2.5L3 21h18l-4.5-6H19l-4-6h2zM11 19h2v3h-2z"/></svg></div>
+          <h3>Tree or Branch</h3>
+          <p>Fallen, overgrown, or blocking sight.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Water main');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 4-5 7-5 10a5 5 0 0 0 10 0c0-3-2-6-5-10z"/></svg></div>
+          <h3>Water Main</h3>
+          <p>Leak, flooding, or low pressure.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Sidewalk');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M9 6v12M15 6v12"/></svg></div>
+          <h3>Sidewalk</h3>
+          <p>Cracked, uneven, or obstructed.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();startReport('Other');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg></div>
+          <h3>Something Else</h3>
+          <p>We'll route it to the right team.</p>
+        </a>
+      </div>
+
+      <h2 class="text-xl mb-4">Your Active Reports</h2>
+      <div class="card mb-6">
+        <ul class="list" id="activeReports">
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">Pothole · Sepulveda Blvd &amp; Venice Blvd <span class="badge badge-warning" style="margin-left:6px;">In progress</span></div>
+              <div class="list-item-sub">Submitted Apr 30 · Tracking ID #311-4421-LA · Public Works dispatched a crew this morning.</div>
+            </div>
+            <div class="list-item-meta">3 days</div>
+          </li>
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-2 7.5V14h4v-3.5A4 4 0 0 0 12 3z"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">Street light out · 1247 Elm St <span class="badge badge-info" style="margin-left:6px;">Assigned</span></div>
+              <div class="list-item-sub">Submitted May 1 · Tracking ID #311-4458-LA · Bureau of Street Lighting · estimated repair within 5 business days.</div>
+            </div>
+            <div class="list-item-meta">2 days</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Reports Near You · Last 7 Days</div>
+          <a class="card-link" href="#">Map view</a>
+        </div>
+        <table class="table">
+          <thead><tr><th>Type</th><th>Where</th><th>Submitted</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Pothole</strong></td><td>Inglewood Blvd &amp; Washington</td><td>2 days ago</td><td><span class="badge badge-warning">In progress</span></td></tr>
+            <tr><td><strong>Tree branch</strong></td><td>Beethoven St</td><td>3 days ago</td><td><span class="badge badge-success">Resolved</span></td></tr>
+            <tr><td><strong>Graffiti</strong></td><td>Lincoln Blvd underpass</td><td>4 days ago</td><td><span class="badge badge-info">Assigned</span></td></tr>
+            <tr><td><strong>Water main</strong></td><td>Marina del Rey</td><td>4 days ago</td><td><span class="badge badge-success">Resolved</span></td></tr>
+            <tr><td><strong>Trash pickup</strong></td><td>Centinela Ave</td><td>5 days ago</td><td><span class="badge badge-success">Resolved</span></td></tr>
+            <tr><td><strong>Sidewalk</strong></td><td>Pacific Ave</td><td>6 days ago</td><td><span class="badge badge-warning">Inspecting</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Report modal -->
+  <div class="modal-backdrop" id="reportModal" hidden onclick="if(event.target===this)cancelReport()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="reportFormTitle">
+      <button class="modal-close" type="button" onclick="cancelReport()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-info" id="reportFormCategory">Pothole</span>
+        <h2 id="reportFormTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">New Report</h2>
+        <p class="text-muted mt-2" style="font-size:15px;line-height:1.5;">Tell us where it is and what's going on. The right city department gets it the moment you submit.</p>
+      </div>
+      <div class="modal-body">
+        <div class="grid-2">
+          <div class="form-row" style="grid-column:1 / -1;">
+            <label>Where is it?</label>
+            <input type="text" id="reportLocation" placeholder="Street address or nearest intersection">
+          </div>
+          <div class="form-row" style="grid-column:1 / -1;">
+            <label>Describe what you're seeing</label>
+            <textarea id="reportDesc" rows="4" placeholder="Size, severity, hazards, anything that helps the crew identify it."></textarea>
+          </div>
+          <div class="form-row">
+            <label>Severity</label>
+            <select id="reportSeverity">
+              <option>Cosmetic — can wait</option>
+              <option>Inconvenient — affects daily use</option>
+              <option>Hazard — could injure someone</option>
+              <option>Emergency — danger to life or property</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Photo (optional)</label>
+            <button class="btn btn-secondary" onclick="event.preventDefault();alert('Photo capture would open. (Demo)');" type="button" style="font-size:13px;padding:8px 12px;">Attach photo</button>
+          </div>
+        </div>
+        <div class="row-between mt-6">
+          <span class="text-sm text-muted">You'll get a tracking ID and updates by text.</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-ghost" type="button" onclick="cancelReport()">Cancel</button>
+            <button class="btn btn-primary" type="button" onclick="submitReport()">Submit report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('repairsSub').textContent =
+        `Report a pothole, broken light, or service issue in ${u.city}. The right ${u.stateName} city department gets it the moment you submit.`;
+    }
+
+    function startReport(category) {
+      document.getElementById('reportFormCategory').textContent = category;
+      document.getElementById('reportFormTitle').textContent = `Report a ${category} Issue`;
+      document.getElementById('reportLocation').value = '';
+      document.getElementById('reportDesc').value = '';
+      document.getElementById('reportSeverity').selectedIndex = 0;
+      document.getElementById('reportModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('reportLocation').focus(), 50);
+    }
+
+    function cancelReport() {
+      document.getElementById('reportModal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function submitReport() {
+      const loc = document.getElementById('reportLocation').value.trim();
+      const desc = document.getElementById('reportDesc').value.trim();
+      if (!loc || !desc) {
+        alert('Please add a location and a short description before submitting. (Demo)');
+        return;
+      }
+      const id = '#311-' + Math.floor(4500 + Math.random() * 99) + '-' + (getCitizen() ? getCitizen().state : 'XX');
+      alert(`Report submitted. Tracking ID ${id}. You'll get text updates as crews respond. (Demo)`);
+      cancelReport();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('reportModal');
+        if (modal && !modal.hidden) cancelReport();
+      }
+    });
+  </script>
+</body>
+</html>

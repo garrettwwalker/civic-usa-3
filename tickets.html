@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickets &amp; passes — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="tickets">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="disclaimer">
+        ⓘ <strong>Demo data:</strong> Passes, balances, and purchases shown are simulated.
+      </div>
+
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Tickets &amp; Passes</h1>
+          <p id="ticketsSub">Transit, parks, museums, and rec facilities — pay once, tap anywhere.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="alert('Wallet view opens. (Demo)');">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4M14 21h-1"/></svg>
+          Show all QR
+        </button>
+      </div>
+
+      <div class="grid-4 mb-6">
+        <div class="stat">
+          <div class="stat-label">Active passes</div>
+          <div class="stat-value">4</div>
+          <div class="stat-trend">2 expire this year</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Transit balance</div>
+          <div class="stat-value">$28.50</div>
+          <div class="stat-trend">Auto-reload at $5</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Park visits this year</div>
+          <div class="stat-value">7</div>
+          <div class="stat-trend up">↑ 2 vs last year</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total saved vs walk-up</div>
+          <div class="stat-value">$184</div>
+          <div class="stat-trend">Resident discounts</div>
+        </div>
+      </div>
+
+      <h2 class="text-xl mb-4">Active Passes</h2>
+      <div class="grid-2 mb-6">
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">TAP · Transit (Metro &amp; Bus)</div>
+            <span class="badge badge-success"><span class="dot"></span>Active</span>
+          </div>
+          <p class="text-muted mb-4">Stored-value card linked to your phone. Tap to ride buses, light rail, and Metrolink commuter trains.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Balance</label><div class="value">$28.50</div></div>
+            <div class="info-field"><label>Last used</label><div class="value">May 3 · Expo/Bundy</div></div>
+            <div class="info-field"><label>Auto-reload</label><div class="value">+$25 at $5</div></div>
+            <div class="info-field"><label>Card</label><div class="value">···· 4408</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="alert('TAP QR shown. (Demo)');">Show QR</button>
+            <button class="btn btn-secondary" onclick="alert('Reload added $20. (Demo)');">Reload $20</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">State Parks · Annual Pass</div>
+            <span class="badge badge-success"><span class="dot"></span>Active</span>
+          </div>
+          <p class="text-muted mb-4">Vehicle-day-use access at all 280 state parks. Includes camping reservation priority.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Renews</label><div class="value">Mar 14, 2027</div></div>
+            <div class="info-field"><label>Plate on file</label><div class="value">9KZA204</div></div>
+            <div class="info-field"><label>Visits this year</label><div class="value">7</div></div>
+            <div class="info-field"><label>Saved vs walk-up</label><div class="value">$110</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="alert('Pass QR shown. (Demo)');">Show pass</button>
+            <button class="btn btn-secondary" onclick="alert('Camping reservation flow. (Demo)');">Reserve camping</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">LACMA &middot; Resident Membership</div>
+            <span class="badge badge-success"><span class="dot"></span>Active</span>
+          </div>
+          <p class="text-muted mb-4">Resident-discounted access plus +1 guest. Unlimited entry, members-only previews.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Renews</label><div class="value">Sep 12, 2026</div></div>
+            <div class="info-field"><label>Tier</label><div class="value">Member +1</div></div>
+            <div class="info-field"><label>Visits this year</label><div class="value">3</div></div>
+            <div class="info-field"><label>Member events</label><div class="value">2 upcoming</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="alert('Membership QR shown. (Demo)');">Show pass</button>
+            <button class="btn btn-secondary" onclick="alert('Event calendar opens. (Demo)');">Member events</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">Rec &amp; Parks &middot; Pool Pass</div>
+            <span class="badge badge-warning"><span class="dot"></span>Expires soon</span>
+          </div>
+          <p class="text-muted mb-4">Summer-season access at all city pools, plus reservable lap-swim slots.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Expires</label><div class="value">Jun 30, 2026</div></div>
+            <div class="info-field"><label>Tier</label><div class="value">Adult resident</div></div>
+            <div class="info-field"><label>Visits this year</label><div class="value">12</div></div>
+            <div class="info-field"><label>Locker rental</label><div class="value">Included</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="alert('Pass renewed through 2027. (Demo)');">Renew $40</button>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-xl mb-4">Browse &amp; Buy</h2>
+      <div class="grid-4 mb-6">
+        <a class="service-card" href="#" onclick="event.preventDefault();alert('Metro day pass purchase flow. (Demo)');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 16h16M9 19v2M15 19v2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg></div>
+          <h3>Metro Day Pass</h3>
+          <p>$5 · Unlimited rides for 24 hrs.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();alert('Park reservation form. (Demo)');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L7 9h2L5 15h2.5L3 21h18l-4.5-6H19l-4-6h2zM11 19h2v3h-2z"/></svg></div>
+          <h3>Park Entry</h3>
+          <p>$10 day-use · 280 parks.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();alert('Museum ticket flow. (Demo)');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M3 21h18M9 21V12h6v9"/></svg></div>
+          <h3>Museum Entry</h3>
+          <p>Resident pricing applied at checkout.</p>
+        </a>
+        <a class="service-card" href="#" onclick="event.preventDefault();alert('Stadium event tickets. (Demo)');">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg></div>
+          <h3>Stadium &amp; Rec</h3>
+          <p>City fields, courts, and event tickets.</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Recent Purchases</div>
+          <a class="card-link" href="#">Download receipts</a>
+        </div>
+        <table class="table">
+          <thead><tr><th>Date</th><th>Item</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>May 1</td><td>TAP auto-reload</td><td>$25.00</td><td><span class="badge badge-success">Completed</span></td></tr>
+            <tr><td>Apr 24</td><td>State Parks · Crystal Cove day-use</td><td>$10.00</td><td><span class="badge badge-success">Used</span></td></tr>
+            <tr><td>Apr 18</td><td>LACMA · Member event +1</td><td>$0.00</td><td><span class="badge badge-success">Used</span></td></tr>
+            <tr><td>Apr 12</td><td>Pool Pass · adult resident</td><td>$40.00</td><td><span class="badge badge-info">Active</span></td></tr>
+            <tr><td>Mar 28</td><td>Metro week pass</td><td>$25.00</td><td><span class="badge badge-success">Used</span></td></tr>
+            <tr><td>Mar 14</td><td>State Parks · annual pass renewal</td><td>$195.00</td><td><span class="badge badge-info">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('ticketsSub').textContent =
+        `Transit, parks, museums, and rec facilities across ${u.stateName} — pay once, tap anywhere.`;
+    }
+  </script>
+</body>
+</html>

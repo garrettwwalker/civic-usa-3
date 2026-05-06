@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Involved — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="engage">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="disclaimer">
+        ⓘ <strong>Demo data:</strong> All petitions, meetings, and counts shown are simulated.
+      </div>
+
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Get Involved</h1>
+          <p id="engageSub">Local petitions, town halls, and ballot measures matched to your interests.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="alert('Interest preferences opened. (Demo)');">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          Edit interests
+        </button>
+      </div>
+
+      <div class="card mb-6">
+        <div class="card-header">
+          <div class="card-title">Your Interests</div>
+          <a class="card-link" href="#">Manage</a>
+        </div>
+        <div class="row">
+          <span class="badge badge-info">Housing</span>
+          <span class="badge badge-info">Public transit</span>
+          <span class="badge badge-info">Public schools</span>
+          <span class="badge badge-info">Climate &amp; environment</span>
+          <span class="badge badge-info">Local libraries</span>
+          <span class="badge badge-neutral">+ Add interest</span>
+        </div>
+      </div>
+
+      <div class="grid-4 mb-6">
+        <div class="stat">
+          <div class="stat-label">Petitions for you</div>
+          <div class="stat-value">5</div>
+          <div class="stat-trend up">3 closing this month</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Town halls this month</div>
+          <div class="stat-value">4</div>
+          <div class="stat-trend">2 within 5 miles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Voter status</div>
+          <div class="stat-value" style="font-size:18px;">Registered <span class="badge badge-success" style="vertical-align:middle;">Active</span></div>
+          <div class="stat-trend" id="engagePrecinct">Precinct 8412</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Actions taken</div>
+          <div class="stat-value">12</div>
+          <div class="stat-trend">3 in past 30 days</div>
+        </div>
+      </div>
+
+      <div class="row-between mb-4">
+        <h2 class="text-xl">Active Petitions</h2>
+        <a class="card-link" href="#">View all 14</a>
+      </div>
+      <div class="grid-2 mb-6">
+        <div class="card petition-card" data-petition="speed" onclick="openPetition('speed');" role="button" tabindex="0">
+          <div class="row-between mb-2">
+            <div class="card-title">Lower the speed limit on Sepulveda Blvd</div>
+            <span class="badge badge-info">Transit</span>
+          </div>
+          <p class="text-muted mb-4">Residents are pushing the city to drop the limit from 35 to 25 mph in commercial zones after two fatal collisions on the corridor.</p>
+          <div class="progress-bar"><div class="progress-fill" style="width:84%;"></div></div>
+          <div class="row-between mt-2">
+            <span class="text-sm text-muted">4,210 of 5,000 signatures · Closes May 21</span>
+            <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+              <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleSign(this);">Sign</button>
+              <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="notify-menu" hidden>
+                <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <div>
+                    <div class="notify-option-title">All updates</div>
+                    <div class="notify-option-desc">Every milestone and response</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                  <div>
+                    <div class="notify-option-title">Major only</div>
+                    <div class="notify-option-desc">Goal reached, decision made</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                  <div>
+                    <div class="notify-option-title">None</div>
+                    <div class="notify-option-desc">No updates</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card petition-card" data-petition="solar" onclick="openPetition('solar');" role="button" tabindex="0">
+          <div class="row-between mb-2">
+            <div class="card-title">Require solar on new construction</div>
+            <span class="badge badge-info">Climate · Housing</span>
+          </div>
+          <p class="text-muted mb-4">Mandate rooftop solar on all new single- and multi-family construction in the city, beginning with permits issued in 2027.</p>
+          <div class="progress-bar"><div class="progress-fill" style="width:98%;"></div></div>
+          <div class="row-between mt-2">
+            <span class="text-sm text-muted">9,820 of 10,000 · Closes May 15</span>
+            <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+              <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleSign(this);">Sign</button>
+              <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="notify-menu" hidden>
+                <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <div>
+                    <div class="notify-option-title">All updates</div>
+                    <div class="notify-option-desc">Every milestone and response</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                  <div>
+                    <div class="notify-option-title">Major only</div>
+                    <div class="notify-option-desc">Goal reached, decision made</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                  <div>
+                    <div class="notify-option-title">None</div>
+                    <div class="notify-option-desc">No updates</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card petition-card" data-petition="schools" onclick="openPetition('schools');" role="button" tabindex="0">
+          <div class="row-between mb-2">
+            <div class="card-title">Restore after-school program funding</div>
+            <span class="badge badge-info">Public schools</span>
+          </div>
+          <p class="text-muted mb-4">Reverse the $14M cut to after-school enrichment in the FY26 district budget, funded by reallocation of unused administrative reserves.</p>
+          <div class="progress-bar"><div class="progress-fill" style="width:62%;"></div></div>
+          <div class="row-between mt-2">
+            <span class="text-sm text-muted">1,876 of 3,000 · Closes Jun 3</span>
+            <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+              <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleSign(this);">Sign</button>
+              <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="notify-menu" hidden>
+                <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <div>
+                    <div class="notify-option-title">All updates</div>
+                    <div class="notify-option-desc">Every milestone and response</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                  <div>
+                    <div class="notify-option-title">Major only</div>
+                    <div class="notify-option-desc">Goal reached, decision made</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                  <div>
+                    <div class="notify-option-title">None</div>
+                    <div class="notify-option-desc">No updates</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card petition-card" data-petition="library" onclick="openPetition('library');" role="button" tabindex="0">
+          <div class="row-between mb-2">
+            <div class="card-title">Save Westside Library evening hours</div>
+            <span class="badge badge-info">Libraries</span>
+          </div>
+          <p class="text-muted mb-4">Reverse the proposed 5pm closure at District 11 branches and keep evening study hours open for students and night-shift workers.</p>
+          <div class="progress-bar"><div class="progress-fill" style="width:61%;"></div></div>
+          <div class="row-between mt-2">
+            <span class="text-sm text-muted">612 of 1,000 · Closes May 30</span>
+            <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+              <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleSign(this);">Sign</button>
+              <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="notify-menu" hidden>
+                <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <div>
+                    <div class="notify-option-title">All updates</div>
+                    <div class="notify-option-desc">Every milestone and response</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                  <div>
+                    <div class="notify-option-title">Major only</div>
+                    <div class="notify-option-desc">Goal reached, decision made</div>
+                  </div>
+                </button>
+                <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                  <div>
+                    <div class="notify-option-title">None</div>
+                    <div class="notify-option-desc">No updates</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-between mb-4">
+        <h2 class="text-xl">Upcoming Town Halls &amp; Meetings</h2>
+        <a class="card-link" href="#">Calendar view</a>
+      </div>
+      <div class="card mb-6">
+        <ul class="list town-hall-list">
+          <li class="town-hall" onclick="toggleTownHall(this);">
+            <div class="town-hall-summary">
+              <div class="list-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">City Council District 11 — FY26 Budget Hearing</div>
+                <div class="list-item-sub">May 8 · 6:00 PM · City Hall, Room 340 · Topics: Transit, Housing</div>
+              </div>
+              <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+                <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleRsvp(this);">RSVP</button>
+                <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                  <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="notify-menu" hidden>
+                  <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                    <div>
+                      <div class="notify-option-title">All updates</div>
+                      <div class="notify-option-desc">Reminders, agenda, and outcomes</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                    <div>
+                      <div class="notify-option-title">Reminders only</div>
+                      <div class="notify-option-desc">Day-of and 1-hour-before alerts</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                    <div>
+                      <div class="notify-option-title">None</div>
+                      <div class="notify-option-desc">No notifications</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="town-hall-details" hidden>
+              <div class="petition-detail-grid">
+                <div class="info-field full"><label>Agenda</label><div class="value">Public Works budget proposal · Transit fare freeze (item 4) · Sidewalk repair allocation map · Public comment period (60 min)</div></div>
+                <div class="info-field"><label>How to attend</label><div class="value">In person at City Hall · Live on YouTube · Phone-in 213-555-0188</div></div>
+                <div class="info-field"><label>Public comment</label><div class="value">Sign up 30 min before · 2 min/speaker · First 30 speakers</div></div>
+                <div class="info-field"><label>Translation</label><div class="value">Spanish (in-person + Zoom) · ASL on request</div></div>
+                <div class="info-field"><label>Parking</label><div class="value">Free with validation · City Hall garage</div></div>
+                <div class="info-field full"><label>Materials</label><div class="value">Budget proposal (124 pp) · Transit fare analysis · Sidewalk inventory map</div></div>
+              </div>
+              <div class="petition-links">
+                <a href="#">View materials</a>
+                <span>·</span>
+                <a href="#">Add to calendar</a>
+                <span>·</span>
+                <a href="#">Past meetings</a>
+              </div>
+            </div>
+          </li>
+          <li class="town-hall" onclick="toggleTownHall(this);">
+            <div class="town-hall-summary">
+              <div class="list-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">Mayor's Listening Session — Climate Action Plan</div>
+                <div class="list-item-sub">May 12 · 7:00 PM · Mar Vista Recreation Center · Topics: Climate</div>
+              </div>
+              <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+                <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleRsvp(this);">RSVP</button>
+                <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                  <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="notify-menu" hidden>
+                  <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                    <div>
+                      <div class="notify-option-title">All updates</div>
+                      <div class="notify-option-desc">Reminders, agenda, and outcomes</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                    <div>
+                      <div class="notify-option-title">Reminders only</div>
+                      <div class="notify-option-desc">Day-of and 1-hour-before alerts</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                    <div>
+                      <div class="notify-option-title">None</div>
+                      <div class="notify-option-desc">No notifications</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="town-hall-details" hidden>
+              <div class="petition-detail-grid">
+                <div class="info-field full"><label>Agenda</label><div class="value">2027 Climate Action Plan draft · Building electrification update · EV charger rollout · Solar mandate proposal · Open mic</div></div>
+                <div class="info-field"><label>How to attend</label><div class="value">In person at Mar Vista Rec Center · Live on Mayor's YouTube</div></div>
+                <div class="info-field"><label>Public comment</label><div class="value">Open mic format · 1 min/speaker · No sign-up required</div></div>
+                <div class="info-field"><label>Translation</label><div class="value">Spanish · Korean · Mandarin (live)</div></div>
+                <div class="info-field"><label>Parking</label><div class="value">Free street + Rec Center lot</div></div>
+                <div class="info-field full"><label>Materials</label><div class="value">Draft Climate Plan (45 pp) · Modeling assumptions · Peer-city comparison</div></div>
+              </div>
+              <div class="petition-links">
+                <a href="#">Read draft plan</a>
+                <span>·</span>
+                <a href="#">Submit written comment</a>
+                <span>·</span>
+                <a href="#">Add to calendar</a>
+              </div>
+            </div>
+          </li>
+          <li class="town-hall" onclick="toggleTownHall(this);">
+            <div class="town-hall-summary">
+              <div class="list-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">School Board — After-School Funding Vote</div>
+                <div class="list-item-sub">May 19 · 1:00 PM · Beaudry Building · Topics: Public schools</div>
+              </div>
+              <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+                <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleRsvp(this);">RSVP</button>
+                <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                  <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="notify-menu" hidden>
+                  <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                    <div>
+                      <div class="notify-option-title">All updates</div>
+                      <div class="notify-option-desc">Reminders, agenda, and outcomes</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                    <div>
+                      <div class="notify-option-title">Reminders only</div>
+                      <div class="notify-option-desc">Day-of and 1-hour-before alerts</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                    <div>
+                      <div class="notify-option-title">None</div>
+                      <div class="notify-option-desc">No notifications</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="town-hall-details" hidden>
+              <div class="petition-detail-grid">
+                <div class="info-field full"><label>Agenda</label><div class="value">After-school program FY26 funding (vote scheduled) · Elementary literacy expansion · Charter school renewals · Public comment</div></div>
+                <div class="info-field"><label>How to attend</label><div class="value">In person at Beaudry Building · Live on LAUSD YouTube</div></div>
+                <div class="info-field"><label>Public comment</label><div class="value">Sign up by May 16, 5pm · 3 min/speaker</div></div>
+                <div class="info-field"><label>Translation</label><div class="value">Spanish · Vietnamese</div></div>
+                <div class="info-field"><label>Childcare</label><div class="value">Free on-site (ages 3–12)</div></div>
+                <div class="info-field full"><label>Materials</label><div class="value">Budget impact analysis · Parent survey results · Program effectiveness study</div></div>
+              </div>
+              <div class="petition-links">
+                <a href="#">Read budget analysis</a>
+                <span>·</span>
+                <a href="#">Sign up to speak</a>
+                <span>·</span>
+                <a href="#">Past board meetings</a>
+              </div>
+            </div>
+          </li>
+          <li class="town-hall" onclick="toggleTownHall(this);">
+            <div class="town-hall-summary">
+              <div class="list-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              </div>
+              <div class="list-item-content">
+                <div class="list-item-title">Westside Neighborhood Council Meeting</div>
+                <div class="list-item-sub">May 23 · 7:00 PM · Mar Vista Community Room · Topics: Housing, Libraries</div>
+              </div>
+              <div class="action-group" data-active="false" onclick="event.stopPropagation();">
+                <button class="btn btn-primary action-main" type="button" onclick="event.stopPropagation();toggleRsvp(this);">RSVP</button>
+                <button class="action-bell" type="button" tabindex="-1" onclick="event.stopPropagation();toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+                  <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                  <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="notify-menu" hidden>
+                  <button class="notify-option" type="button" data-level="all" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                    <div>
+                      <div class="notify-option-title">All updates</div>
+                      <div class="notify-option-desc">Reminders, agenda, and outcomes</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="major" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                    <div>
+                      <div class="notify-option-title">Reminders only</div>
+                      <div class="notify-option-desc">Day-of and 1-hour-before alerts</div>
+                    </div>
+                  </button>
+                  <button class="notify-option" type="button" data-level="none" onclick="event.stopPropagation();setNotify(this);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                    <div>
+                      <div class="notify-option-title">None</div>
+                      <div class="notify-option-desc">No notifications</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="town-hall-details" hidden>
+              <div class="petition-detail-grid">
+                <div class="info-field full"><label>Agenda</label><div class="value">District housing development review · Library hours item · Neighborhood safety briefing · Upcoming community events</div></div>
+                <div class="info-field"><label>How to attend</label><div class="value">In person at Mar Vista Community Room · Hybrid via Zoom</div></div>
+                <div class="info-field"><label>Public comment</label><div class="value">Sign up at door · 2 min/speaker</div></div>
+                <div class="info-field"><label>Translation</label><div class="value">Spanish on request</div></div>
+                <div class="info-field"><label>Light dinner</label><div class="value">Provided 6:30–7:00 PM</div></div>
+                <div class="info-field full"><label>Materials</label><div class="value">Development applications (3) · Library hours impact statement · Safety report</div></div>
+              </div>
+              <div class="petition-links">
+                <a href="#">View materials</a>
+                <span>·</span>
+                <a href="#">Add to calendar</a>
+                <span>·</span>
+                <a href="#">Council member contacts</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Your Past Actions</div>
+          <a class="card-link" href="#">Export</a>
+        </div>
+        <table class="table">
+          <thead><tr><th>Date</th><th>Action</th><th>Topic</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Apr 22</td><td>Signed: Speed limit on Sepulveda Blvd</td><td>Transit</td><td><span class="badge badge-success">Counted</span></td></tr>
+            <tr><td>Apr 9</td><td>Attended: District 11 town hall</td><td>Housing</td><td><span class="badge badge-success">Confirmed</span></td></tr>
+            <tr><td>Mar 30</td><td>Signed: Climate Bond Measure CB-2</td><td>Climate</td><td><span class="badge badge-success">Counted</span></td></tr>
+            <tr><td>Mar 18</td><td>Voted: Special election Prop 14</td><td>Public schools</td><td><span class="badge badge-success">Confirmed</span></td></tr>
+            <tr><td>Feb 2</td><td>Signed: Public transit fare freeze</td><td>Transit</td><td><span class="badge badge-success">Counted</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Petition modal -->
+  <div class="modal-backdrop" id="petitionModal" hidden onclick="if(event.target===this)closePetition()">
+    <div class="modal-pane" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" onclick="closePetition()" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <span class="badge badge-info" id="modalTag">Transit</span>
+        <h2 id="modalTitle" class="mt-2" style="font-size:24px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;">—</h2>
+        <p id="modalDesc" class="text-muted mt-2" style="font-size:15px;line-height:1.5;">—</p>
+      </div>
+      <div class="modal-body">
+        <div class="progress-bar" style="height:6px;"><div class="progress-fill" id="modalProgress" style="width:0%;"></div></div>
+        <div class="row-between mt-2 mb-6">
+          <span class="text-sm text-muted" id="modalSig">—</span>
+          <div class="action-group" data-active="false" id="modalActionGroup">
+            <button class="btn btn-primary action-main" type="button" onclick="toggleSign(this);">Sign petition</button>
+            <button class="action-bell" type="button" tabindex="-1" onclick="toggleNotifyMenu(this);" aria-haspopup="true" aria-label="Notification settings">
+              <svg class="action-bell-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+              <svg class="action-bell-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="notify-menu" hidden>
+              <button class="notify-option" type="button" data-level="all" onclick="setNotify(this);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/></svg>
+                <div>
+                  <div class="notify-option-title">All updates</div>
+                  <div class="notify-option-desc">Every milestone and response</div>
+                </div>
+              </button>
+              <button class="notify-option" type="button" data-level="major" onclick="setNotify(this);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                <div>
+                  <div class="notify-option-title">Major only</div>
+                  <div class="notify-option-desc">Goal reached, decision made</div>
+                </div>
+              </button>
+              <button class="notify-option" type="button" data-level="none" onclick="setNotify(this);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/></svg>
+                <div>
+                  <div class="notify-option-title">None</div>
+                  <div class="notify-option-desc">No updates</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-lg mb-2" style="font-weight:600;">Background</h3>
+        <p class="text-muted mb-6" id="modalWhy" style="font-size:14px;line-height:1.55;">—</p>
+
+        <h3 class="text-lg mb-2" style="font-weight:600;">Details</h3>
+        <div class="petition-detail-grid mb-6" id="modalDetails"></div>
+
+        <h3 class="text-lg mb-2" style="font-weight:600;">Discussion</h3>
+        <p class="text-muted" id="modalDiscussion" style="font-size:14px;line-height:1.55;">—</p>
+
+        <div class="petition-links mt-4" id="modalLinks"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('engageSub').textContent =
+        `Local petitions, town halls, and ballot measures in ${u.city}, ${u.stateName} matched to your interests.`;
+    }
+
+    // === YouTube-style split Sign/RSVP buttons with notification dropdown ===
+    // Each .action-group has data-active="true|false" and data-level="all|major|none".
+    // Inactive: just the main button. Active: main button + bell+chevron split section.
+    // Clicking the bell opens a 3-option menu (All / Major or Reminders only / None).
+
+    const BELL_SVGS = {
+      all: '<path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M21 7c1 1.5 1.5 3 1.5 5"/><path d="M3 7c-1 1.5-1.5 3-1.5 5"/>',
+      major: '<path d="M18 16l-1-3V9a5 5 0 0 0-10 0v4l-1 3z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+      none: '<path d="M18 16l-1-3V9a5 5 0 0 0-7-4.7"/><path d="M5 9v4l-1 3h13"/><path d="M10 20a2 2 0 0 0 4 0"/><path d="M3 3l18 18"/>',
+    };
+
+    function activateActionGroup(group, mainBtn, activeLabel) {
+      group.dataset.active = 'true';
+      group.dataset.level = 'all';
+      mainBtn.textContent = activeLabel;
+      mainBtn.classList.remove('btn-primary');
+      mainBtn.classList.add('btn-secondary');
+      mainBtn.title = 'Click to undo';
+      const bell = group.querySelector('.action-bell');
+      if (bell) bell.removeAttribute('tabindex');
+      updateBellIcon(group, 'all');
+      markSelectedOption(group, 'all');
+    }
+
+    function deactivateActionGroup(group, mainBtn, inactiveLabel) {
+      group.dataset.active = 'false';
+      delete group.dataset.level;
+      mainBtn.textContent = inactiveLabel;
+      mainBtn.classList.remove('btn-secondary');
+      mainBtn.classList.add('btn-primary');
+      mainBtn.title = '';
+      const bell = group.querySelector('.action-bell');
+      if (bell) bell.setAttribute('tabindex', '-1');
+      const menu = group.querySelector('.notify-menu');
+      if (menu) menu.hidden = true;
+    }
+
+    function toggleSign(mainBtn) {
+      const group = mainBtn.closest('.action-group');
+      const isModal = group.id === 'modalActionGroup';
+      const inactiveLabel = isModal ? 'Sign petition' : 'Sign';
+      const id = isModal
+        ? currentPetition
+        : (group.closest('.petition-card') && group.closest('.petition-card').dataset.petition);
+      if (group.dataset.active === 'true') {
+        deactivateActionGroup(group, mainBtn, inactiveLabel);
+        if (id && PETITIONS[id]) {
+          PETITIONS[id].current = Math.max(0, PETITIONS[id].current - 1);
+        }
+      } else {
+        activateActionGroup(group, mainBtn, 'Signed');
+        if (id && PETITIONS[id]) {
+          PETITIONS[id].current += 1;
+        }
+      }
+      if (id) updatePetitionDisplay(id);
+      mirrorActionGroup(group, 'sign');
+    }
+
+    function toggleRsvp(mainBtn) {
+      const group = mainBtn.closest('.action-group');
+      if (group.dataset.active === 'true') {
+        group.dataset.active = 'false';
+        delete group.dataset.level;
+        mainBtn.textContent = 'RSVP';
+        mainBtn.classList.remove('btn-secondary');
+        mainBtn.classList.add('btn-primary');
+        mainBtn.title = '';
+        const bell = group.querySelector('.action-bell');
+        if (bell) bell.setAttribute('tabindex', '-1');
+        const menu = group.querySelector('.notify-menu');
+        if (menu) menu.hidden = true;
+      } else {
+        group.dataset.active = 'true';
+        group.dataset.level = 'all';
+        mainBtn.textContent = "You're in";
+        mainBtn.classList.remove('btn-primary');
+        mainBtn.classList.add('btn-secondary');
+        mainBtn.title = 'Click to undo';
+        const bell = group.querySelector('.action-bell');
+        if (bell) bell.removeAttribute('tabindex');
+        updateBellIcon(group, 'all');
+        markSelectedOption(group, 'all');
+      }
+    }
+
+    function toggleNotifyMenu(bellBtn) {
+      const group = bellBtn.closest('.action-group');
+      const menu = group.querySelector('.notify-menu');
+      const wasOpen = !menu.hidden;
+      // Close any other open menus before showing this one
+      document.querySelectorAll('.notify-menu').forEach(m => { m.hidden = true; });
+      if (!wasOpen) menu.hidden = false;
+    }
+
+    function setNotify(optionBtn) {
+      const level = optionBtn.dataset.level;
+      const group = optionBtn.closest('.action-group');
+      group.dataset.level = level;
+      updateBellIcon(group, level);
+      markSelectedOption(group, level);
+      const menu = group.querySelector('.notify-menu');
+      if (menu) menu.hidden = true;
+      mirrorActionGroup(group, 'notify');
+    }
+
+    function updateBellIcon(group, level) {
+      const icon = group.querySelector('.action-bell-icon');
+      if (!icon) return;
+      icon.innerHTML = BELL_SVGS[level] || BELL_SVGS.all;
+    }
+
+    function markSelectedOption(group, level) {
+      group.querySelectorAll('.notify-option').forEach(opt => {
+        opt.classList.toggle('selected', opt.dataset.level === level);
+      });
+    }
+
+    // Card <-> modal action group sync. When user toggles in either, mirror to the other.
+    function mirrorActionGroup(sourceGroup, kind) {
+      if (kind !== 'sign' && kind !== 'notify') return;
+      const isModal = sourceGroup.id === 'modalActionGroup';
+      let targetGroup;
+      if (isModal) {
+        if (!currentPetition) return;
+        const card = document.querySelector(`.petition-card[data-petition="${currentPetition}"]`);
+        targetGroup = card && card.querySelector('.action-group');
+      } else {
+        const card = sourceGroup.closest('.petition-card');
+        if (!card) return;
+        if (currentPetition !== card.dataset.petition) return;
+        targetGroup = document.getElementById('modalActionGroup');
+      }
+      if (!targetGroup || targetGroup === sourceGroup) return;
+      const sourceActive = sourceGroup.dataset.active === 'true';
+      const targetMain = targetGroup.querySelector('.action-main');
+      const targetBell = targetGroup.querySelector('.action-bell');
+      const targetMenu = targetGroup.querySelector('.notify-menu');
+      const inactiveLabel = targetGroup.id === 'modalActionGroup' ? 'Sign petition' : 'Sign';
+      if (sourceActive) {
+        targetGroup.dataset.active = 'true';
+        targetGroup.dataset.level = sourceGroup.dataset.level || 'all';
+        targetMain.textContent = 'Signed';
+        targetMain.classList.remove('btn-primary');
+        targetMain.classList.add('btn-secondary');
+        targetMain.title = 'Click to undo';
+        if (targetBell) targetBell.removeAttribute('tabindex');
+        updateBellIcon(targetGroup, targetGroup.dataset.level);
+        markSelectedOption(targetGroup, targetGroup.dataset.level);
+      } else {
+        targetGroup.dataset.active = 'false';
+        delete targetGroup.dataset.level;
+        targetMain.textContent = inactiveLabel;
+        targetMain.classList.remove('btn-secondary');
+        targetMain.classList.add('btn-primary');
+        targetMain.title = '';
+        if (targetBell) targetBell.setAttribute('tabindex', '-1');
+        if (targetMenu) targetMenu.hidden = true;
+      }
+    }
+
+    // Click outside any open menu to close it.
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.notify-menu:not([hidden])').forEach(menu => {
+        const group = menu.closest('.action-group');
+        if (group && !group.contains(e.target)) menu.hidden = true;
+      });
+    });
+
+    // Petition data — opens in modal when card is clicked.
+    // current/goal/closes drive both the modal and the per-card sig text.
+    const PETITIONS = {
+      speed: {
+        title: 'Lower the speed limit on Sepulveda Blvd',
+        tag: 'Transit',
+        description: 'Residents are pushing the city to drop the limit from 35 to 25 mph in commercial zones after two fatal collisions on the corridor.',
+        current: 4210, goal: 5000, closes: 'May 21',
+        why: "Two pedestrian fatalities on this corridor in the past 18 months. Speed survey shows the 85th percentile is 42 mph in school zones — well over the posted limit. The corridor sees 18,000 daily trips and serves 4 elementary schools within 3 blocks.",
+        organizer: 'Maria Chen · Walk LA Coalition',
+        afterClose: 'Submitted to LA City Council District 11; vote expected Jun 18, 2026',
+        endorsed: 'Council Member Park (D11) · LA Vision Zero · MTA Safety Board · LA Bike Coalition',
+        pace: '+340 this week, +1,200 last month',
+        discussion: '87 comments — mostly supportive; common concern is enforcement. Recent: "We have been asking for this since 2018. Glad to see momentum." — A. Rodriguez',
+        links: [['Read full proposal (4 pp)', '#'], ['87 comments', '#'], ['LA Times coverage', '#'], ['Speed survey data', '#']],
+      },
+      solar: {
+        title: 'Require solar on new construction',
+        tag: 'Climate · Housing',
+        description: 'Mandate rooftop solar on all new single- and multi-family construction in the city, beginning with permits issued in 2027.',
+        current: 9820, goal: 10000, closes: 'May 15',
+        why: 'California targets 100% renewable by 2045. A new-construction solar mandate would lock in ~800,000 tons of CO2 reductions per year by 2035 and cut long-term energy costs for residents. Modeled construction-cost increase: 1.8–3.2% per unit, recouped in 6–9 years.',
+        organizer: 'Solar California PAC + Sierra Club LA',
+        afterClose: 'Becomes a citywide ballot measure for the Nov 2026 election',
+        endorsed: 'Mayor Karen Bass · Sierra Club · Climate Resolve · LA League of Conservation Voters',
+        pace: '+2,100 this week (within 2% of threshold)',
+        discussion: '412 comments — active debate on construction-cost impact. Recent: "Existing California Title 24 already requires solar — this just closes loopholes." — J. Tanaka',
+        links: [['Read full proposal (12 pp)', '#'], ['412 comments', '#'], ['Cost-impact study', '#'], ['Endorsement list', '#']],
+      },
+      schools: {
+        title: 'Restore after-school program funding',
+        tag: 'Public schools',
+        description: 'Reverse the $14M cut to after-school enrichment in the FY26 district budget, funded by reallocation of unused administrative reserves.',
+        current: 1876, goal: 3000, closes: 'Jun 3',
+        why: "The $14M FY26 cut eliminates after-school enrichment for 8,400 LAUSD students across 32 schools — programs that include tutoring, sports, and arts. Many serve low-income neighborhoods with no alternative care between 3pm and 6pm. The proposed reallocation comes from a $52M unspent admin reserve.",
+        organizer: 'LAUSD Parent-Teacher Coalition',
+        afterClose: 'Direct petition to the LAUSD Board for the Aug 12 vote',
+        endorsed: "4 LAUSD board members · UTLA · Mayor's Office · Boys & Girls Clubs of LA",
+        pace: '+180 this week — slow growth, needs amplification',
+        discussion: '156 comments — parent testimonials about program impact. Recent: "My daughter learned to read in the after-school tutoring program. Cutting it would erase three years of progress." — Y. Nguyen',
+        links: [['Read full proposal (6 pp)', '#'], ['156 comments', '#'], ['Share with neighbors', '#'], ['Program effectiveness study', '#']],
+      },
+      library: {
+        title: 'Save Westside Library evening hours',
+        tag: 'Libraries',
+        description: 'Reverse the proposed 5pm closure at District 11 branches and keep evening study hours open for students and night-shift workers.',
+        current: 612, goal: 1000, closes: 'May 30',
+        why: 'The proposed budget closes all District 11 branches at 5pm. A library survey found 220+ students rely on evening study hours weekly, plus night-shift workers who use the printer/computer access. The branches account for 14% of evening foot traffic citywide.',
+        organizer: 'Friends of Westside Library',
+        afterClose: 'Library Board hearing on May 30 — early decision',
+        endorsed: 'American Library Association · Friends of LA Public Library · Council Member Park',
+        pace: '+90 this week — needs ~400 more in 4 weeks',
+        discussion: '43 comments — study group testimonials. Recent: "I work nights and the library is the only place I can study after my shift. Please keep it open." — M. Patel',
+        links: [['Read full proposal (3 pp)', '#'], ['43 comments', '#'], ['Library Board meeting info', '#'], ['Branch usage data', '#']],
+      },
+    };
+
+    function petitionSigText(p) {
+      return `${p.current.toLocaleString()} of ${p.goal.toLocaleString()} signatures · Closes ${p.closes}`;
+    }
+    function petitionProgress(p) {
+      return Math.min(100, Math.round((p.current / p.goal) * 1000) / 10);
+    }
+    // Re-render the signature count + progress bar on a card and (if open) the modal.
+    function updatePetitionDisplay(id) {
+      const p = PETITIONS[id];
+      if (!p) return;
+      const sigText = petitionSigText(p);
+      const progress = petitionProgress(p);
+      const card = document.querySelector(`.petition-card[data-petition="${id}"]`);
+      if (card) {
+        const sigEl = card.querySelector('.row-between span.text-sm');
+        if (sigEl) sigEl.textContent = sigText;
+        const fill = card.querySelector('.progress-fill');
+        if (fill) fill.style.width = progress + '%';
+      }
+      if (currentPetition === id) {
+        const modalSig = document.getElementById('modalSig');
+        const modalProgress = document.getElementById('modalProgress');
+        if (modalSig) modalSig.textContent = sigText;
+        if (modalProgress) modalProgress.style.width = progress + '%';
+      }
+    }
+
+    let currentPetition = null;
+
+    function openPetition(id) {
+      const p = PETITIONS[id];
+      if (!p) return;
+      currentPetition = id;
+
+      document.getElementById('modalTag').textContent = p.tag;
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalDesc').textContent = p.description;
+      document.getElementById('modalProgress').style.width = petitionProgress(p) + '%';
+      document.getElementById('modalSig').textContent = petitionSigText(p);
+      document.getElementById('modalWhy').textContent = p.why;
+      document.getElementById('modalDiscussion').textContent = p.discussion;
+
+      const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      document.getElementById('modalDetails').innerHTML = `
+        <div class="info-field"><label>Lead organizer</label><div class="value">${escape(p.organizer)}</div></div>
+        <div class="info-field"><label>After closing</label><div class="value">${escape(p.afterClose)}</div></div>
+        <div class="info-field full"><label>Endorsed by</label><div class="value">${escape(p.endorsed)}</div></div>
+        <div class="info-field"><label>Signature pace</label><div class="value">${escape(p.pace)}</div></div>
+        <div class="info-field"><label>Status</label><div class="value">Active &middot; accepting signatures</div></div>
+      `;
+      document.getElementById('modalLinks').innerHTML = p.links.map(([label, href], i, arr) =>
+        `<a href="${escape(href)}">${escape(label)}</a>${i < arr.length - 1 ? '<span>·</span>' : ''}`
+      ).join('');
+
+      syncModalSignFromCard(id);
+
+      const modal = document.getElementById('petitionModal');
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal-pane').scrollTop = 0;
+    }
+
+    function closePetition() {
+      document.getElementById('petitionModal').hidden = true;
+      document.body.style.overflow = '';
+      currentPetition = null;
+    }
+
+    // Reflect the card's signed state + notification level in the modal action group.
+    function syncModalSignFromCard(id) {
+      const card = document.querySelector(`.petition-card[data-petition="${id}"]`);
+      const cardGroup = card && card.querySelector('.action-group');
+      const modalGroup = document.getElementById('modalActionGroup');
+      if (!modalGroup) return;
+      const modalMain = modalGroup.querySelector('.action-main');
+      const modalBell = modalGroup.querySelector('.action-bell');
+      const modalMenu = modalGroup.querySelector('.notify-menu');
+      const cardActive = cardGroup && cardGroup.dataset.active === 'true';
+      if (cardActive) {
+        modalGroup.dataset.active = 'true';
+        modalGroup.dataset.level = cardGroup.dataset.level || 'all';
+        modalMain.textContent = 'Signed';
+        modalMain.classList.remove('btn-primary');
+        modalMain.classList.add('btn-secondary');
+        modalMain.title = 'Click to undo';
+        if (modalBell) modalBell.hidden = false;
+        updateBellIcon(modalGroup, modalGroup.dataset.level);
+        markSelectedOption(modalGroup, modalGroup.dataset.level);
+      } else {
+        modalGroup.dataset.active = 'false';
+        delete modalGroup.dataset.level;
+        modalMain.textContent = 'Sign petition';
+        modalMain.classList.remove('btn-secondary');
+        modalMain.classList.add('btn-primary');
+        modalMain.title = '';
+        if (modalBell) modalBell.hidden = true;
+        if (modalMenu) modalMenu.hidden = true;
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('petitionModal');
+        if (modal && !modal.hidden) closePetition();
+      }
+    });
+
+    function toggleTownHall(li) {
+      const details = li.querySelector('.town-hall-details');
+      if (!details) return;
+      const isOpen = !details.hidden;
+      details.hidden = isOpen;
+      li.classList.toggle('expanded', !isOpen);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Wallet — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="license">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Digital Wallet</h1>
+          <p>Your IDs, licenses, registrations, and credentials — all in one place. Tap a tab to switch.</p>
+        </div>
+      </div>
+
+      <div class="doc-tabs" role="tablist">
+        <button class="doc-tab active" type="button" data-doc="license" onclick="switchDoc('license')" role="tab" aria-selected="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M15 10h3M15 14h3M6 16c.5-1.5 2-2 3-2s2.5.5 3 2"/></svg>
+          <span>Driver's License</span>
+        </button>
+        <button class="doc-tab" type="button" data-doc="passport" onclick="switchDoc('passport')" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><circle cx="12" cy="11" r="3"/><path d="M8 17h8"/></svg>
+          <span>Passport</span>
+        </button>
+        <button class="doc-tab" type="button" data-doc="hunting" onclick="switchDoc('hunting')" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L7 9h2L5 15h2.5L3 21h18l-4.5-6H19l-4-6h2zm-1 17h2v3h-2z"/></svg>
+          <span>Hunting</span>
+        </button>
+        <button class="doc-tab" type="button" data-doc="vehicle" onclick="switchDoc('vehicle')" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-6h14l2 6M3 13v6h2v-2h14v2h2v-6M3 13h18"/><circle cx="7" cy="16" r="1"/><circle cx="17" cy="16" r="1"/></svg>
+          <span>Vehicle Reg</span>
+        </button>
+        <button class="doc-tab" type="button" data-doc="birth" onclick="switchDoc('birth')" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0-1 1-2 2-2h12c1 0 2 1 2 2v14c0 1-1 2-2 2H6c-1 0-2-1-2-2z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span>Birth Cert</span>
+        </button>
+        <button class="doc-tab" type="button" data-doc="health" onclick="switchDoc('health')" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 11h18M7 15h3"/></svg>
+          <span>Health Card</span>
+        </button>
+      </div>
+
+      <!-- ============ DRIVER'S LICENSE ============ -->
+      <div class="doc-panel active" data-doc="license">
+        <div class="grid-2">
+          <div>
+            <div class="license-wrap">
+             <div class="license-flip" id="licenseFlip">
+              <div class="license-flip-inner">
+              <div class="license-card license-front" id="licenseCard">
+                <div class="license-glyph" id="licGlyph" aria-hidden="true"></div>
+                <div class="license-scrim" aria-hidden="true"></div>
+                <div class="license-state" id="licState">CALIFORNIA</div>
+                <div class="license-type">Driver's License · Class C</div>
+                <div class="license-portrait" id="licPortrait">SM</div>
+                <div class="license-fields">
+                  <div class="license-name" id="licName">SARAH K. MITCHELL</div>
+                  <div class="license-address" id="licAddress">—</div>
+                  <div class="license-num-line">
+                    <span>License No.</span>
+                    <strong id="licNum">—</strong>
+                  </div>
+                </div>
+                <div class="license-meta">
+                  <div><span>Date of Birth</span><strong id="licDob">—</strong></div>
+                  <div><span>Expires</span><strong id="licExp">—</strong></div>
+                  <div><span>Sex</span><strong id="licSex">—</strong></div>
+                  <div><span>Height</span><strong id="licHeight">—</strong></div>
+                  <div><span>Weight</span><strong id="licWeight">—</strong></div>
+                  <div><span>Eyes</span><strong id="licEyes">—</strong></div>
+                  <div><span>Hair</span><strong id="licHair">—</strong></div>
+                </div>
+                <div class="license-shine" aria-hidden="true"></div>
+              </div>
+
+              <div class="license-card license-back" aria-hidden="true">
+                <div class="license-back-content">
+                  <div class="license-back-state" id="licBackState">CALIFORNIA</div>
+                  <div class="license-back-label">Driver's License</div>
+                  <div class="license-qr-large" id="licQrLarge"></div>
+                </div>
+              </div>
+              </div>
+             </div>
+              <div class="license-actions">
+                <button class="btn btn-primary" id="licQrBtn" onclick="toggleQR()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4"/></svg>
+                  Show QR for verification
+                </button>
+                <button class="btn btn-secondary" onclick="alert('Selective disclosure: prove an attribute (e.g. age over 21) without revealing the rest of your license. (Demo)');">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                  Selective share
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Credential Details</div>
+              <span class="badge badge-success"><span class="dot"></span>Verified</span>
+            </div>
+            <div class="scanned-info" id="details"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PASSPORT ============ -->
+      <div class="doc-panel" data-doc="passport" hidden>
+        <div class="grid-2">
+          <div>
+           <div class="doc-flip" id="docFlipPassport">
+            <div class="doc-flip-inner">
+            <div class="doc-card passport-card doc-front">
+              <div class="passport-watermark"></div>
+              <svg class="passport-flag" viewBox="0 0 38 20" xmlns="http://www.w3.org/2000/svg" aria-label="US flag">
+                <rect width="38" height="20" fill="#ffffff"/>
+                <g fill="#c8102e">
+                  <rect y="0"    width="38" height="1.54"/>
+                  <rect y="3.08" width="38" height="1.54"/>
+                  <rect y="6.15" width="38" height="1.54"/>
+                  <rect y="9.23" width="38" height="1.54"/>
+                  <rect y="12.31" width="38" height="1.54"/>
+                  <rect y="15.38" width="38" height="1.54"/>
+                  <rect y="18.46" width="38" height="1.54"/>
+                </g>
+                <rect width="15.2" height="10.77" fill="#0b3d91"/>
+                <g fill="#ffffff">
+                  <circle cx="2.5"  cy="1.8" r="0.55"/>
+                  <circle cx="5.0"  cy="1.8" r="0.55"/>
+                  <circle cx="7.5"  cy="1.8" r="0.55"/>
+                  <circle cx="10.0" cy="1.8" r="0.55"/>
+                  <circle cx="12.5" cy="1.8" r="0.55"/>
+                  <circle cx="3.75" cy="3.6" r="0.55"/>
+                  <circle cx="6.25" cy="3.6" r="0.55"/>
+                  <circle cx="8.75" cy="3.6" r="0.55"/>
+                  <circle cx="11.25" cy="3.6" r="0.55"/>
+                  <circle cx="2.5"  cy="5.4" r="0.55"/>
+                  <circle cx="5.0"  cy="5.4" r="0.55"/>
+                  <circle cx="7.5"  cy="5.4" r="0.55"/>
+                  <circle cx="10.0" cy="5.4" r="0.55"/>
+                  <circle cx="12.5" cy="5.4" r="0.55"/>
+                  <circle cx="3.75" cy="7.2" r="0.55"/>
+                  <circle cx="6.25" cy="7.2" r="0.55"/>
+                  <circle cx="8.75" cy="7.2" r="0.55"/>
+                  <circle cx="11.25" cy="7.2" r="0.55"/>
+                  <circle cx="2.5"  cy="9.0" r="0.55"/>
+                  <circle cx="5.0"  cy="9.0" r="0.55"/>
+                  <circle cx="7.5"  cy="9.0" r="0.55"/>
+                  <circle cx="10.0" cy="9.0" r="0.55"/>
+                  <circle cx="12.5" cy="9.0" r="0.55"/>
+                </g>
+              </svg>
+              <div class="passport-header">
+                <div class="passport-country">UNITED STATES OF AMERICA</div>
+                <div class="passport-type">Passport · Passeport · Pasaporte</div>
+              </div>
+              <div class="passport-photo" id="passPhoto">SM</div>
+              <div class="passport-fields">
+                <div class="passport-meta">
+                  <div><span>Type</span><strong>P</strong></div>
+                  <div><span>Country</span><strong>USA</strong></div>
+                  <div><span>Passport No.</span><strong id="passNum">P12345678</strong></div>
+                  <div><span>Surname</span><strong id="passSurname">MITCHELL</strong></div>
+                  <div><span>Given names</span><strong id="passGiven">SARAH KATHLEEN</strong></div>
+                  <div><span>Nationality</span><strong>UNITED STATES</strong></div>
+                  <div><span>DOB</span><strong id="passDob">14 MAR 1991</strong></div>
+                  <div><span>Sex</span><strong id="passSex">F</strong></div>
+                  <div><span>Place of birth</span><strong id="passPob">CALIFORNIA, USA</strong></div>
+                  <div><span>Expiry</span><strong id="passExp">04 MAY 2030</strong></div>
+                </div>
+              </div>
+              <div class="passport-mrz" id="passMrz">P&lt;USAMITCHELL&lt;&lt;SARAH&lt;KATHLEEN&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+              <div class="doc-shine" aria-hidden="true"></div>
+            </div>
+            <div class="doc-card doc-back passport-back" aria-hidden="true">
+              <div class="doc-back-content">
+                <div class="doc-back-state">UNITED STATES</div>
+                <div class="doc-back-label">Passport</div>
+                <div class="doc-qr-large" id="passQrLarge"></div>
+              </div>
+            </div>
+            </div>
+           </div>
+            <div class="license-actions">
+              <button class="btn btn-primary" id="passQrBtn" onclick="toggleDocFlip('passport', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4"/></svg>
+                Show QR for verification
+              </button>
+              <button class="btn btn-secondary" onclick="alert('Mobile passport check-in initiated. (Demo)');">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                Mobile check-in
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Credential Details</div>
+              <span class="badge badge-success"><span class="dot"></span>Verified</span>
+            </div>
+            <div class="scanned-info">
+              <div class="info-field full"><label>Issuing Authority</label><div class="value">U.S. Department of State</div></div>
+              <div class="info-field"><label>Type</label><div class="value">P · Regular tourist</div></div>
+              <div class="info-field"><label>Endorsements</label><div class="value">None</div></div>
+              <div class="info-field"><label>Date of Issue</label><div class="value">May 5, 2020</div></div>
+              <div class="info-field"><label>Date of Expiry</label><div class="value">May 4, 2030</div></div>
+              <div class="info-field"><label>Pages</label><div class="value">52 (visa pages)</div></div>
+              <div class="info-field"><label>RFID Chip</label><div class="value">Active · ICAO 9303</div></div>
+              <div class="info-field full"><label>Authorized Travel</label><div class="value">All countries except OFAC-restricted</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ HUNTING LICENSE ============ -->
+      <div class="doc-panel" data-doc="hunting" hidden>
+        <div class="grid-2">
+          <div>
+           <div class="doc-flip" id="docFlipHunting">
+            <div class="doc-flip-inner">
+            <div class="doc-card hunting-card doc-front">
+              <div class="hunting-watermark"></div>
+              <div class="hunting-header">
+                <div class="hunting-state" id="huntState">STATE OF CALIFORNIA</div>
+                <div class="hunting-dept">Department of Fish &amp; Wildlife</div>
+              </div>
+              <div class="hunting-title">HUNTING LICENSE</div>
+              <div class="hunting-name" id="huntName">SARAH K. MITCHELL</div>
+              <div class="hunting-fields">
+                <div><span>License #</span><strong id="huntNum">HUNT-CA-447821</strong></div>
+                <div><span>License Year</span><strong>2026 – 2027</strong></div>
+                <div><span>Resident</span><strong>YES</strong></div>
+                <div><span>Hunter Ed</span><strong>VERIFIED</strong></div>
+              </div>
+              <div class="hunting-tags">
+                <span class="hunting-tag">Deer Tag A1</span>
+                <span class="hunting-tag">Waterfowl</span>
+                <span class="hunting-tag">Upland Game</span>
+              </div>
+              <div class="doc-shine" aria-hidden="true"></div>
+            </div>
+            <div class="doc-card doc-back hunting-back" aria-hidden="true">
+              <div class="doc-back-content">
+                <div class="doc-back-state" id="huntBackState">CALIFORNIA</div>
+                <div class="doc-back-label">Hunting License</div>
+                <div class="doc-qr-large" id="huntQrLarge"></div>
+              </div>
+            </div>
+            </div>
+           </div>
+            <div class="license-actions">
+              <button class="btn btn-primary" id="huntQrBtn" onclick="toggleDocFlip('hunting', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4"/></svg>
+                Show QR for verification
+              </button>
+              <button class="btn btn-secondary" onclick="alert('Tag inventory and harvest log. (Demo)');">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                Log harvest
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Credential Details</div>
+              <span class="badge badge-success"><span class="dot"></span>Active</span>
+            </div>
+            <div class="scanned-info">
+              <div class="info-field full"><label>Issuing Authority</label><div class="value" id="huntAuthority">California Department of Fish &amp; Wildlife</div></div>
+              <div class="info-field"><label>License Year</label><div class="value">Jul 1, 2026 – Jun 30, 2027</div></div>
+              <div class="info-field"><label>Resident Status</label><div class="value">In-state resident</div></div>
+              <div class="info-field"><label>Hunter Education</label><div class="value">Cert #HE-22041</div></div>
+              <div class="info-field"><label>Tags Issued</label><div class="value">3 (deer, waterfowl, upland)</div></div>
+              <div class="info-field"><label>Tags Used</label><div class="value">0 of 3</div></div>
+              <div class="info-field"><label>Bag Limits</label><div class="value">Per zone &amp; season</div></div>
+              <div class="info-field"><label>Public Lands Access</label><div class="value">All state WMAs</div></div>
+              <div class="info-field full"><label>Restrictions</label><div class="value">No mountain lion · No bighorn sheep without separate tag</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ VEHICLE REGISTRATION ============ -->
+      <div class="doc-panel" data-doc="vehicle" hidden>
+        <div class="grid-2">
+          <div>
+           <div class="doc-flip" id="docFlipVehicle">
+            <div class="doc-flip-inner">
+            <div class="doc-card vehicle-card doc-front">
+              <div class="vehicle-stamp">REGISTERED</div>
+              <div class="vehicle-header">
+                <div class="vehicle-state" id="vehState">STATE OF CALIFORNIA</div>
+                <div class="vehicle-dept">Department of Motor Vehicles</div>
+              </div>
+              <div class="vehicle-title">Vehicle Registration</div>
+              <div class="vehicle-plate-row">
+                <div class="vehicle-plate">9KZA204</div>
+                <div class="vehicle-year">2027</div>
+              </div>
+              <div class="vehicle-fields">
+                <div><span>VIN</span><strong>1FTFW1ET7DKD12345</strong></div>
+                <div><span>Year / Make</span><strong>2021 Honda</strong></div>
+                <div><span>Model / Body</span><strong>CR-V SUV</strong></div>
+                <div><span>Color</span><strong>Silver</strong></div>
+                <div><span>Owner</span><strong id="vehOwner">SARAH K. MITCHELL</strong></div>
+                <div><span>Expires</span><strong>Apr 30, 2027</strong></div>
+              </div>
+              <div class="doc-shine" aria-hidden="true"></div>
+            </div>
+            <div class="doc-card doc-back vehicle-back" aria-hidden="true">
+              <div class="doc-back-content">
+                <div class="doc-back-state" id="vehBackState">CALIFORNIA</div>
+                <div class="doc-back-label">Vehicle Registration</div>
+                <div class="doc-qr-large" id="vehQrLarge"></div>
+              </div>
+            </div>
+            </div>
+           </div>
+            <div class="license-actions">
+              <button class="btn btn-primary" id="vehQrBtn" onclick="toggleDocFlip('vehicle', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4"/></svg>
+                Show QR for verification
+              </button>
+              <button class="btn btn-secondary" onclick="alert('Renewal flow opens. (Demo)');">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+                Renew online
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Credential Details</div>
+              <span class="badge badge-success"><span class="dot"></span>Current</span>
+            </div>
+            <div class="scanned-info">
+              <div class="info-field full"><label>Registered Owner</label><div class="value" id="vehDetailOwner">Sarah K. Mitchell</div></div>
+              <div class="info-field full"><label>Owner Address</label><div class="value" id="vehAddr">—</div></div>
+              <div class="info-field"><label>Plate Number</label><div class="value">9KZA204</div></div>
+              <div class="info-field"><label>VIN</label><div class="value">1FTFW1ET7DKD12345</div></div>
+              <div class="info-field"><label>Year / Make / Model</label><div class="value">2021 Honda CR-V</div></div>
+              <div class="info-field"><label>Body Style</label><div class="value">Sport Utility</div></div>
+              <div class="info-field"><label>Fuel</label><div class="value">Gasoline · 28 MPG</div></div>
+              <div class="info-field"><label>Registration Class</label><div class="value">Passenger</div></div>
+              <div class="info-field"><label>Smog Inspection</label><div class="value">Mar 2026 · Pass</div></div>
+              <div class="info-field"><label>Expires</label><div class="value">Apr 30, 2027</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ BIRTH CERTIFICATE ============ -->
+      <div class="doc-panel" data-doc="birth" hidden>
+        <div class="grid-2">
+          <div>
+           <div class="doc-flip" id="docFlipBirth">
+            <div class="doc-flip-inner">
+            <div class="doc-card birth-card doc-front">
+              <div class="birth-corner birth-corner-tl"></div>
+              <div class="birth-corner birth-corner-tr"></div>
+              <div class="birth-corner birth-corner-bl"></div>
+              <div class="birth-corner birth-corner-br"></div>
+              <div class="birth-header">
+                <div class="birth-state" id="birthState">STATE OF CALIFORNIA</div>
+                <div class="birth-dept">Vital Records · County of Los Angeles</div>
+              </div>
+              <div class="birth-title">Certificate of Live Birth</div>
+              <div class="birth-name" id="birthName">Sarah Kathleen Mitchell</div>
+              <div class="birth-fields">
+                <div><span>Date of Birth</span><strong id="birthDob">March 14, 1991</strong></div>
+                <div><span>Place of Birth</span><strong id="birthPob">Los Angeles, California</strong></div>
+                <div><span>Sex</span><strong id="birthSex">Female</strong></div>
+                <div><span>Mother</span><strong>Jane Catherine Mitchell</strong></div>
+                <div><span>Father</span><strong>Robert James Mitchell</strong></div>
+                <div><span>Certificate #</span><strong id="birthCert">BC-CA-19910314-4477</strong></div>
+              </div>
+              <div class="birth-seal" aria-hidden="true">
+                <span>OFFICIAL<br>SEAL</span>
+              </div>
+              <div class="doc-shine" aria-hidden="true"></div>
+            </div>
+            <div class="doc-card doc-back birth-back" aria-hidden="true">
+              <div class="doc-back-content">
+                <div class="doc-back-state" id="birthBackState">CALIFORNIA</div>
+                <div class="doc-back-label">Birth Certificate</div>
+                <div class="doc-qr-large" id="birthQrLarge"></div>
+              </div>
+            </div>
+            </div>
+           </div>
+            <div class="license-actions">
+              <button class="btn btn-primary" id="birthQrBtn" onclick="toggleDocFlip('birth', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4"/></svg>
+                Show QR for verification
+              </button>
+              <button class="btn btn-secondary" onclick="alert('Certified copy request — $25, mails in 3-5 business days. (Demo)');">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/></svg>
+                Request copy
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Credential Details</div>
+              <span class="badge badge-success"><span class="dot"></span>On file</span>
+            </div>
+            <div class="scanned-info">
+              <div class="info-field full"><label>Registrar</label><div class="value">Los Angeles County Registrar-Recorder</div></div>
+              <div class="info-field"><label>Certificate Number</label><div class="value">BC-CA-19910314-4477</div></div>
+              <div class="info-field"><label>Filed</label><div class="value">March 15, 1991</div></div>
+              <div class="info-field"><label>Status</label><div class="value">Certified · Long form</div></div>
+              <div class="info-field"><label>Sex on Certificate</label><div class="value">Female</div></div>
+              <div class="info-field"><label>Hospital</label><div class="value">Cedars-Sinai Medical Center</div></div>
+              <div class="info-field"><label>Attendant</label><div class="value">Dr. Linda K. Park, MD</div></div>
+              <div class="info-field"><label>Mother's maiden name</label><div class="value">Jane Catherine Anderson</div></div>
+              <div class="info-field"><label>Father</label><div class="value">Robert James Mitchell</div></div>
+              <div class="info-field"><label>Certified copies issued</label><div class="value">3 (latest Jul 2024)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ HEALTH INSURANCE CARD ============ -->
+      <div class="doc-panel" data-doc="health" hidden>
+        <div class="grid-2">
+          <div>
+           <div class="doc-flip" id="docFlipHealth">
+            <div class="doc-flip-inner">
+            <div class="doc-card health-card doc-front">
+              <div class="health-header">
+                <div class="health-provider">BlueShield</div>
+                <div class="health-tier">Gold PPO 2000</div>
+              </div>
+              <div class="health-name" id="healthName">SARAH K MITCHELL</div>
+              <div class="health-fields">
+                <div><span>Member ID</span><strong>XJP-2841-04</strong></div>
+                <div><span>Group #</span><strong>G-4421</strong></div>
+                <div><span>BIN</span><strong>003858</strong></div>
+                <div><span>RxPCN</span><strong>BSCN</strong></div>
+                <div><span>Effective</span><strong>01/01/2024</strong></div>
+                <div><span>Network</span><strong>PPO Plus</strong></div>
+              </div>
+              <div class="health-copays">
+                <div><span>PCP</span><strong>$30</strong></div>
+                <div><span>Specialist</span><strong>$50</strong></div>
+                <div><span>Urgent Care</span><strong>$75</strong></div>
+                <div><span>ER</span><strong>$300</strong></div>
+              </div>
+              <div class="health-rx" aria-hidden="true">Rx</div>
+              <div class="doc-shine" aria-hidden="true"></div>
+            </div>
+            <div class="doc-card doc-back health-back" aria-hidden="true">
+              <div class="doc-back-content">
+                <div class="doc-back-state">BLUESHIELD</div>
+                <div class="doc-back-label">Member Card</div>
+                <div class="doc-qr-large" id="healthQrLarge"></div>
+              </div>
+            </div>
+            </div>
+           </div>
+            <div class="license-actions">
+              <button class="btn btn-primary" id="healthQrBtn" onclick="toggleDocFlip('health', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M21 14v3M17 17v4h4"/></svg>
+                Show at provider
+              </button>
+              <a class="btn btn-secondary" href="healthcare.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/></svg>
+                Open insurance
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Credential Details</div>
+              <span class="badge badge-success"><span class="dot"></span>Active</span>
+            </div>
+            <div class="scanned-info">
+              <div class="info-field full"><label>Carrier</label><div class="value">Blue Shield of California (Carrier #BC-44021)</div></div>
+              <div class="info-field"><label>Plan Name</label><div class="value">Gold PPO 2000</div></div>
+              <div class="info-field"><label>Plan Type</label><div class="value">PPO · Marketplace</div></div>
+              <div class="info-field"><label>Member ID</label><div class="value">XJP-2841-04</div></div>
+              <div class="info-field"><label>Group #</label><div class="value">G-4421</div></div>
+              <div class="info-field"><label>BIN / RxPCN</label><div class="value">003858 / BSCN</div></div>
+              <div class="info-field"><label>Effective</label><div class="value">January 1, 2024</div></div>
+              <div class="info-field"><label>Plan Year</label><div class="value">2026 (renews Dec 31)</div></div>
+              <div class="info-field"><label>Deductible</label><div class="value">$2,000 / yr</div></div>
+              <div class="info-field"><label>OOP Max</label><div class="value">$7,500 / yr</div></div>
+              <div class="info-field full"><label>Primary Care Provider</label><div class="value">Dr. Sarah Patel · UCLA Health</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Per-doc Renewal & Updates ============ -->
+
+      <!-- License renewal (full flow) -->
+      <div class="card mt-6" data-doc-section="license">
+        <div class="card-header">
+          <div class="card-title">Renewal &amp; Updates</div>
+          <span class="badge" id="renewalBadge"><span class="dot"></span>—</span>
+        </div>
+
+        <div class="scanned-info mb-4">
+          <div class="info-field"><label>Current expiry</label><div class="value" id="renewCurrentExp">—</div></div>
+          <div class="info-field"><label>Time remaining</label><div class="value" id="renewRemaining">—</div></div>
+          <div class="info-field"><label>Last updated</label><div class="value" id="renewLastUpdated">—</div></div>
+          <div class="info-field"><label>DMV visit required</label><div class="value">No · all online</div></div>
+        </div>
+
+        <div class="row" style="gap:8px;">
+          <button class="btn btn-primary" id="btnShowRenew" onclick="toggleRenewPane()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+            Renew online
+          </button>
+          <button class="btn btn-secondary" id="btnShowUpdate" onclick="toggleUpdatePane()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+            Update details
+          </button>
+          <span class="text-sm text-muted" style="margin-left:auto;">Identity verified by ePluribus · Skip the DMV line</span>
+        </div>
+
+        <div class="renewal-pane mt-6" id="renewPane" hidden>
+          <div class="row-between mb-4">
+            <div>
+              <div class="text-lg" style="font-weight:600;">Renew Your License Online</div>
+              <div class="text-sm text-muted mt-2">Submit electronically. Your digital license updates immediately; the physical card mails in 5–7 business days.</div>
+            </div>
+          </div>
+
+          <div class="grid-2 mb-4">
+            <div class="form-row">
+              <label>Renewal term</label>
+              <select id="renewTerm" onchange="recalcRenewal()">
+                <option value="4">4-year — Standard ($36.00)</option>
+                <option value="8">8-year — REAL ID compliant ($68.00)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>New expiry</label>
+              <input type="text" id="renewNewExp" readonly>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-weight:500;cursor:pointer;">
+              <input type="checkbox" id="renewVision" style="width:auto;margin-top:2px;">
+              <span>I attest that my vision meets state requirements (corrective lenses noted on the license if applicable).</span>
+            </label>
+          </div>
+          <div class="form-row">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-weight:500;cursor:pointer;">
+              <input type="checkbox" id="renewLegal" style="width:auto;margin-top:2px;">
+              <span>I confirm there are no medical or legal changes that would disqualify me from holding a driver license.</span>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Photo</label>
+            <div class="row" style="gap:10px;">
+              <span class="badge badge-info"><span class="dot"></span>Use current photo on file</span>
+              <button class="btn btn-ghost" style="font-size:13px;padding:6px 10px;" onclick="alert('Photo upload would open here. (Demo)');">Upload new</button>
+            </div>
+          </div>
+
+          <div class="row-between mt-6">
+            <div>
+              <div class="text-sm text-muted">Total due today</div>
+              <div class="text-xl" id="renewFee">$36.00</div>
+            </div>
+            <div class="row" style="gap:8px;">
+              <button class="btn btn-ghost" onclick="toggleRenewPane()">Cancel</button>
+              <button class="btn btn-primary" onclick="submitRenewal()">Pay &amp; submit</button>
+            </div>
+          </div>
+
+          <div id="renewSuccess" hidden class="banner-success mt-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>Renewal accepted. Digital license updated · new expiry <strong id="renewSuccessDate"></strong>. A physical card has been mailed to your address on file.</div>
+          </div>
+        </div>
+
+        <div class="renewal-pane mt-6" id="updatePane" hidden>
+          <div class="row-between mb-4">
+            <div>
+              <div class="text-lg" style="font-weight:600;">Update License Details</div>
+              <div class="text-sm text-muted mt-2">Address changes are free and effective immediately. Physical descriptors update on the next reissue or renewal.</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-row" style="grid-column:1 / -1;">
+              <label>Street address</label>
+              <input type="text" id="upAddr">
+            </div>
+            <div class="form-row">
+              <label>City</label>
+              <input type="text" id="upCity">
+            </div>
+            <div class="form-row">
+              <label>ZIP</label>
+              <input type="text" id="upZip" maxlength="10">
+            </div>
+            <div class="form-row">
+              <label>Height</label>
+              <input type="text" id="upHeight" placeholder="5'-06&quot;">
+            </div>
+            <div class="form-row">
+              <label>Eye color</label>
+              <select id="upEyes">
+                <option value="BRN">Brown (BRN)</option>
+                <option value="BLU">Blue (BLU)</option>
+                <option value="GRN">Green (GRN)</option>
+                <option value="HZL">Hazel (HZL)</option>
+                <option value="GRY">Gray (GRY)</option>
+                <option value="BLK">Black (BLK)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Hair color</label>
+              <select id="upHair">
+                <option value="BRN">Brown (BRN)</option>
+                <option value="BLK">Black (BLK)</option>
+                <option value="BLN">Blonde (BLN)</option>
+                <option value="RED">Red (RED)</option>
+                <option value="GRY">Gray (GRY)</option>
+                <option value="WHI">White (WHI)</option>
+                <option value="BAL">Bald (BAL)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row-between mt-4">
+            <span class="text-sm text-muted">Address changes are free. ID reissue with descriptor updates: $12.50.</span>
+            <div class="row" style="gap:8px;">
+              <button class="btn btn-ghost" onclick="toggleUpdatePane()">Cancel</button>
+              <button class="btn btn-primary" onclick="submitUpdate()">Save changes</button>
+            </div>
+          </div>
+
+          <div id="updateSuccess" hidden class="banner-success mt-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>Details updated. Your license now reflects the new information.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passport renewal -->
+      <div class="card mt-6" data-doc-section="passport" hidden>
+        <div class="card-header">
+          <div class="card-title">Passport Management</div>
+          <span class="badge badge-success"><span class="dot"></span>4 years remaining</span>
+        </div>
+        <div class="scanned-info mb-4">
+          <div class="info-field"><label>Current expiry</label><div class="value">May 4, 2030</div></div>
+          <div class="info-field"><label>Renewal eligibility</label><div class="value">Now (within 1 year of expiry)</div></div>
+          <div class="info-field"><label>Standard renewal fee</label><div class="value">$130</div></div>
+          <div class="info-field"><label>Processing time</label><div class="value">6–8 weeks · Expedited 2–3 weeks ($60)</div></div>
+        </div>
+        <div class="row" style="gap:8px;">
+          <button class="btn btn-primary" onclick="alert('Form DS-82 renewal flow opens. (Demo)');">Start DS-82 renewal</button>
+          <button class="btn btn-secondary" onclick="alert('Travel advisory dashboard. (Demo)');">Travel advisories</button>
+          <a class="btn btn-ghost" href="https://travel.state.gov" target="_blank" rel="noopener">travel.state.gov →</a>
+        </div>
+      </div>
+
+      <!-- Hunting renewal -->
+      <div class="card mt-6" data-doc-section="hunting" hidden>
+        <div class="card-header">
+          <div class="card-title">License Management</div>
+          <span class="badge badge-warning"><span class="dot"></span>Expires Jun 30, 2027</span>
+        </div>
+        <div class="scanned-info mb-4">
+          <div class="info-field"><label>License year</label><div class="value">Jul 1, 2026 – Jun 30, 2027</div></div>
+          <div class="info-field"><label>Renewal opens</label><div class="value">May 1, 2027</div></div>
+          <div class="info-field"><label>Resident fee</label><div class="value">$54.00 (annual)</div></div>
+          <div class="info-field"><label>Tag inventory</label><div class="value">3 of 3 unused</div></div>
+        </div>
+        <div class="row" style="gap:8px;">
+          <button class="btn btn-primary" onclick="alert('Tag purchase flow. (Demo)');">Buy additional tags</button>
+          <button class="btn btn-secondary" onclick="alert('Harvest log — record your catch. (Demo)');">Harvest log</button>
+          <button class="btn btn-ghost" onclick="alert('Season schedule for your zone. (Demo)');">Season schedule</button>
+        </div>
+      </div>
+
+      <!-- Vehicle renewal -->
+      <div class="card mt-6" data-doc-section="vehicle" hidden>
+        <div class="card-header">
+          <div class="card-title">Registration Management</div>
+          <span class="badge badge-success"><span class="dot"></span>Current until Apr 30, 2027</span>
+        </div>
+        <div class="scanned-info mb-4">
+          <div class="info-field"><label>Current expiry</label><div class="value">April 30, 2027</div></div>
+          <div class="info-field"><label>Annual fee</label><div class="value">$192.00 (incl. $36 transportation tax)</div></div>
+          <div class="info-field"><label>Smog inspection</label><div class="value">Passed Mar 12, 2026 (next due 2028)</div></div>
+          <div class="info-field"><label>Insurance on file</label><div class="value">State Farm · Policy #SF-104832</div></div>
+        </div>
+        <div class="row" style="gap:8px;">
+          <button class="btn btn-primary" onclick="alert('Renewal flow opens. (Demo)');">Renew online</button>
+          <button class="btn btn-secondary" onclick="alert('Transfer ownership flow. (Demo)');">Transfer title</button>
+          <button class="btn btn-ghost" onclick="alert('Replacement plate / sticker request. (Demo)');">Order replacement</button>
+        </div>
+      </div>
+
+      <!-- Birth certificate -->
+      <div class="card mt-6" data-doc-section="birth" hidden>
+        <div class="card-header">
+          <div class="card-title">Vital Record Options</div>
+          <span class="badge badge-info"><span class="dot"></span>3 certified copies issued</span>
+        </div>
+        <div class="scanned-info mb-4">
+          <div class="info-field"><label>Certified copy</label><div class="value">$25 · Mails in 3–5 business days</div></div>
+          <div class="info-field"><label>Expedited copy</label><div class="value">$45 · 1–2 business days</div></div>
+          <div class="info-field"><label>Long-form vs short-form</label><div class="value">Both available</div></div>
+          <div class="info-field"><label>Apostille (international use)</label><div class="value">$26 + processing</div></div>
+        </div>
+        <div class="row" style="gap:8px;">
+          <button class="btn btn-primary" onclick="alert('Certified copy order — $25, mails to address on file. (Demo)');">Order certified copy</button>
+          <button class="btn btn-secondary" onclick="alert('Name change petition opens. (Demo)');">Petition name change</button>
+          <button class="btn btn-ghost" onclick="alert('Apostille request flow. (Demo)');">Request apostille</button>
+        </div>
+      </div>
+
+      <!-- Health card -->
+      <div class="card mt-6" data-doc-section="health" hidden>
+        <div class="card-header">
+          <div class="card-title">Insurance Management</div>
+          <span class="badge badge-success"><span class="dot"></span>Active until Dec 31, 2026</span>
+        </div>
+        <div class="scanned-info mb-4">
+          <div class="info-field"><label>Current premium</label><div class="value">$385 / month</div></div>
+          <div class="info-field"><label>YTD out-of-pocket</label><div class="value">$1,247 of $7,500 max</div></div>
+          <div class="info-field"><label>Open enrollment</label><div class="value">Nov 1 – Dec 15, 2026</div></div>
+          <div class="info-field"><label>Auto-renewal</label><div class="value">On · same plan</div></div>
+        </div>
+        <div class="row" style="gap:8px;">
+          <a class="btn btn-primary" href="healthcare.html">Manage plans &amp; coverage</a>
+          <button class="btn btn-secondary" onclick="alert('Network search — find in-network providers. (Demo)');">Find provider</button>
+          <button class="btn btn-ghost" onclick="alert('Claims and EOB statements. (Demo)');">View claims</button>
+        </div>
+      </div>
+
+      <!-- ============ Recent Verifications (global) ============ -->
+      <div class="card mt-6">
+        <div class="card-header">
+          <div class="card-title">Recent Verifications</div>
+        </div>
+        <ul class="list">
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22V12h20v10"/><path d="M6 12V8a6 6 0 0 1 12 0v4"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">TSA · LAX Airport <span class="badge badge-info" style="margin-left:6px;">Driver's License</span></div>
+              <div class="list-item-sub">Shared: name, photo, age over 18</div>
+            </div>
+            <div class="list-item-meta">Apr 28 · 6:14 AM</div>
+          </li>
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">UCLA Health · primary care visit <span class="badge badge-info" style="margin-left:6px;">Health Card</span></div>
+              <div class="list-item-sub">Shared: member ID, group, copay tier</div>
+            </div>
+            <div class="list-item-meta">Apr 22</div>
+          </li>
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2M13 11h2M9 15h2M13 15h2"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">Wells Fargo · account opening <span class="badge badge-info" style="margin-left:6px;">Driver's License + Birth Cert</span></div>
+              <div class="list-item-sub">Shared: full identity (KYC)</div>
+            </div>
+            <div class="list-item-meta">Apr 14</div>
+          </li>
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">Trader Joe's · age verification <span class="badge badge-info" style="margin-left:6px;">Driver's License</span></div>
+              <div class="list-item-sub">Shared: age over 21 only</div>
+            </div>
+            <div class="list-item-meta">Apr 03</div>
+          </li>
+          <li class="list-item">
+            <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+            <div class="list-item-content">
+              <div class="list-item-title">Customs &amp; Border Protection · LAX entry <span class="badge badge-info" style="margin-left:6px;">Passport</span></div>
+              <div class="list-item-sub">Shared: full passport scan + travel history</div>
+            </div>
+            <div class="list-item-meta">Mar 18</div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    // ============ Driver's License (existing) ============
+    function formatDateShort(iso) {
+      const d = new Date(iso + 'T00:00:00');
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      const yy = String(d.getFullYear()).slice(-2);
+      return `${mm}/${dd}/${yy}`;
+    }
+
+    function renderLicenseCard(u) {
+      document.getElementById('licState').textContent = u.stateName.toUpperCase();
+      document.getElementById('licName').textContent =
+        `${u.lastName.toUpperCase()}, ${u.firstName.toUpperCase()} ${u.middleInitial}`;
+      document.getElementById('licAddress').textContent =
+        `${u.address.toUpperCase()} · ${u.city.toUpperCase()}, ${u.state} ${u.zip}`;
+      document.getElementById('licDob').textContent = formatDateShort(u.dob);
+      document.getElementById('licExp').textContent = formatDateShort(u.expires);
+      document.getElementById('licSex').textContent = u.sex;
+      document.getElementById('licHeight').textContent = u.height;
+      document.getElementById('licWeight').textContent = u.weight || '135 lb';
+      document.getElementById('licEyes').textContent = u.eyes;
+      document.getElementById('licHair').textContent = u.hair || 'BRN';
+      document.getElementById('licNum').textContent = u.licenseNumber;
+      document.getElementById('licPortrait').textContent = u.initials;
+    }
+
+    function renderDetails(u) {
+      const fields = [
+        ['Issuing authority', `${u.stateName} DMV`, true],
+        ['Class', u.class],
+        ['Status', 'Active'],
+        ['Issued', formatDateLong(u.issued)],
+        ['Expires', formatDateLong(u.expires)],
+        ['Height', u.height],
+        ['Eyes', u.eyes],
+        ['Address', `${u.address}, ${u.city}, ${u.state} ${u.zip}`, true],
+      ];
+      document.getElementById('details').innerHTML = fields.map(([l,v,full]) => `
+        <div class="info-field${full ? ' full' : ''}">
+          <label>${l}</label>
+          <div class="value">${v}</div>
+        </div>
+      `).join('');
+    }
+
+    function daysUntil(iso) {
+      const d = new Date(iso + 'T00:00:00');
+      return Math.round((d - new Date()) / (1000 * 60 * 60 * 24));
+    }
+
+    function renderRenewalStatus(u) {
+      const days = daysUntil(u.expires);
+      let remaining, badgeClass, badgeText;
+      if (days < 0) {
+        remaining = `Expired ${-days} days ago`;
+        badgeClass = 'badge-danger';
+        badgeText = 'Expired';
+      } else if (days < 60) {
+        remaining = `${days} days`;
+        badgeClass = 'badge-warning';
+        badgeText = 'Renew now';
+      } else if (days < 180) {
+        remaining = `${days} days`;
+        badgeClass = 'badge-warning';
+        badgeText = 'Renewing soon';
+      } else if (days < 365) {
+        remaining = `${days} days`;
+        badgeClass = 'badge-info';
+        badgeText = 'Up to date';
+      } else {
+        const years = (days / 365).toFixed(1);
+        remaining = `${years} years`;
+        badgeClass = 'badge-success';
+        badgeText = 'Up to date';
+      }
+      document.getElementById('renewCurrentExp').textContent = formatDateLong(u.expires);
+      document.getElementById('renewRemaining').textContent = remaining;
+      document.getElementById('renewLastUpdated').textContent = formatDateLong(u.issued);
+      const badge = document.getElementById('renewalBadge');
+      badge.className = `badge ${badgeClass}`;
+      badge.innerHTML = `<span class="dot"></span>${badgeText}`;
+    }
+
+    function rerenderAll() {
+      const u = getCitizen();
+      if (!u) return;
+      renderLicenseCard(u);
+      renderDetails(u);
+      renderRenewalStatus(u);
+      renderOtherDocs(u);
+    }
+
+    function recalcRenewal() {
+      const u = getCitizen();
+      if (!u) return;
+      const term = parseInt(document.getElementById('renewTerm').value, 10);
+      const fee = term === 8 ? '$68.00' : '$36.00';
+      const today = new Date();
+      const currentExp = new Date(u.expires + 'T00:00:00');
+      const base = currentExp > today ? currentExp : today;
+      const newExp = new Date(base);
+      newExp.setFullYear(newExp.getFullYear() + term);
+      const iso = newExp.toISOString().split('T')[0];
+      document.getElementById('renewNewExp').value = formatDateLong(iso);
+      document.getElementById('renewNewExp').dataset.iso = iso;
+      document.getElementById('renewFee').textContent = fee;
+    }
+
+    function toggleRenewPane() {
+      const pane = document.getElementById('renewPane');
+      document.getElementById('updatePane').hidden = true;
+      const willOpen = pane.hidden;
+      pane.hidden = !pane.hidden;
+      if (willOpen) {
+        document.getElementById('renewSuccess').hidden = true;
+        document.getElementById('renewVision').checked = false;
+        document.getElementById('renewLegal').checked = false;
+        recalcRenewal();
+        pane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function toggleUpdatePane() {
+      const pane = document.getElementById('updatePane');
+      document.getElementById('renewPane').hidden = true;
+      const willOpen = pane.hidden;
+      pane.hidden = !pane.hidden;
+      if (willOpen) {
+        const u = getCitizen();
+        if (u) {
+          document.getElementById('upAddr').value = u.address || '';
+          document.getElementById('upCity').value = u.city || '';
+          document.getElementById('upZip').value = u.zip || '';
+          document.getElementById('upHeight').value = u.height || '';
+          document.getElementById('upEyes').value = u.eyes || 'BRN';
+          document.getElementById('upHair').value = u.hair || 'BRN';
+        }
+        document.getElementById('updateSuccess').hidden = true;
+        pane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function submitRenewal() {
+      const vision = document.getElementById('renewVision').checked;
+      const legal = document.getElementById('renewLegal').checked;
+      if (!vision || !legal) {
+        alert('Please complete both attestations before submitting. (Demo)');
+        return;
+      }
+      const u = getCitizen();
+      if (!u) return;
+      const newIso = document.getElementById('renewNewExp').dataset.iso;
+      u.expires = newIso;
+      u.issued = new Date().toISOString().split('T')[0];
+      setCitizen(u);
+      rerenderAll();
+      document.getElementById('renewSuccessDate').textContent = formatDateLong(newIso);
+      document.getElementById('renewSuccess').hidden = false;
+    }
+
+    function submitUpdate() {
+      const u = getCitizen();
+      if (!u) return;
+      u.address = document.getElementById('upAddr').value.trim() || u.address;
+      u.city = document.getElementById('upCity').value.trim() || u.city;
+      u.zip = document.getElementById('upZip').value.trim() || u.zip;
+      u.height = document.getElementById('upHeight').value.trim() || u.height;
+      u.eyes = document.getElementById('upEyes').value;
+      u.hair = document.getElementById('upHair').value;
+      setCitizen(u);
+      rerenderAll();
+      document.getElementById('updateSuccess').hidden = false;
+    }
+
+    function toggleQR() {
+      const flip = document.getElementById('licenseFlip');
+      const btn = document.getElementById('licQrBtn');
+      const flipped = flip.classList.toggle('flipped');
+      btn.lastChild.textContent = flipped ? ' Show front' : ' Show QR for verification';
+    }
+
+    // ============ Tab switching ============
+    function switchDoc(doc) {
+      document.querySelectorAll('.doc-tab').forEach(t => {
+        const isActive = t.dataset.doc === doc;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', isActive);
+      });
+      document.querySelectorAll('.doc-panel').forEach(p => {
+        const isActive = p.dataset.doc === doc;
+        p.classList.toggle('active', isActive);
+        p.hidden = !isActive;
+      });
+      document.querySelectorAll('[data-doc-section]').forEach(s => {
+        s.hidden = s.dataset.docSection !== doc;
+      });
+    }
+
+    // ============ Per-doc flip-to-QR ============
+    function toggleDocFlip(doc, btn) {
+      const id = 'docFlip' + doc.charAt(0).toUpperCase() + doc.slice(1);
+      const flip = document.getElementById(id);
+      if (!flip) return;
+      const flipped = flip.classList.toggle('flipped');
+      if (btn) btn.lastChild.textContent = flipped ? ' Show front' : ' Show QR for verification';
+    }
+
+    function genQr(data, size = 240) {
+      const enc = encodeURIComponent(data);
+      return `<img src="https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=2&qzone=1&data=${enc}" alt="QR code">`;
+    }
+
+    // ============ Other docs render ============
+    function renderOtherDocs(u) {
+      // Passport
+      document.getElementById('passSurname').textContent = u.lastName.toUpperCase();
+      document.getElementById('passGiven').textContent = `${u.firstName.toUpperCase()} KATHLEEN`;
+      document.getElementById('passDob').textContent = formatDate(u.dob).toUpperCase();
+      document.getElementById('passSex').textContent = u.sex;
+      document.getElementById('passPob').textContent = `${u.stateName.toUpperCase()}, USA`;
+      document.getElementById('passPhoto').textContent = u.initials;
+      const passNumDigits = u.licenseNumber.replace(/[^0-9]/g, '').padEnd(8, '0').slice(0,8);
+      const passNum = `P${passNumDigits}`;
+      document.getElementById('passNum').textContent = passNum;
+      const surnameClean = u.lastName.toUpperCase().replace(/[^A-Z]/g, '');
+      const firstClean = u.firstName.toUpperCase().replace(/[^A-Z]/g, '');
+      document.getElementById('passMrz').textContent =
+        `P<USA${surnameClean}<<${firstClean}<KATHLEEN<<<<<<<<<<<<<<<<<`.slice(0,44);
+
+      // Hunting
+      document.getElementById('huntState').textContent = `STATE OF ${u.stateName.toUpperCase()}`;
+      document.getElementById('huntName').textContent =
+        `${u.firstName.toUpperCase()} ${u.middleInitial}. ${u.lastName.toUpperCase()}`;
+      const huntNum = `HUNT-${u.state}-${passNumDigits.slice(-6)}`;
+      document.getElementById('huntNum').textContent = huntNum;
+      document.getElementById('huntAuthority').textContent = `${u.stateName} Department of Fish & Wildlife`;
+
+      // Vehicle
+      document.getElementById('vehState').textContent = `STATE OF ${u.stateName.toUpperCase()}`;
+      document.getElementById('vehOwner').textContent =
+        `${u.firstName.toUpperCase()} ${u.middleInitial}. ${u.lastName.toUpperCase()}`;
+      document.getElementById('vehDetailOwner').textContent =
+        `${u.firstName} ${u.middleInitial}. ${u.lastName}`;
+      document.getElementById('vehAddr').textContent =
+        `${u.address}, ${u.city}, ${u.state} ${u.zip}`;
+      const vehPlate = '9KZA204';
+
+      // Birth
+      document.getElementById('birthState').textContent = `STATE OF ${u.stateName.toUpperCase()}`;
+      document.getElementById('birthName').textContent =
+        `${u.firstName} Kathleen ${u.lastName}`;
+      document.getElementById('birthDob').textContent = formatDateLong(u.dob);
+      document.getElementById('birthPob').textContent = `${u.city}, ${u.stateName}`;
+      document.getElementById('birthSex').textContent = u.sex === 'F' ? 'Female' : (u.sex === 'M' ? 'Male' : u.sex);
+      const birthCertNum = `BC-${u.state}-${u.dob.replace(/-/g,'')}-${passNumDigits.slice(-4)}`;
+      document.getElementById('birthCert').textContent = birthCertNum;
+
+      // Health
+      document.getElementById('healthName').textContent =
+        `${u.firstName.toUpperCase()} ${u.middleInitial} ${u.lastName.toUpperCase()}`;
+
+      // Per-doc back state labels
+      const stateUpper = u.stateName.toUpperCase();
+      document.getElementById('huntBackState').textContent = stateUpper;
+      document.getElementById('vehBackState').textContent = stateUpper;
+      document.getElementById('birthBackState').textContent = stateUpper;
+
+      // Per-doc QR codes (back face)
+      document.getElementById('passQrLarge').innerHTML =
+        genQr(`civic://verify/passport/${passNum}`);
+      document.getElementById('huntQrLarge').innerHTML =
+        genQr(`civic://verify/hunting/${u.state}/${huntNum}`);
+      document.getElementById('vehQrLarge').innerHTML =
+        genQr(`civic://verify/vehicle/${u.state}/${vehPlate}`);
+      document.getElementById('birthQrLarge').innerHTML =
+        genQr(`civic://verify/birth/${u.state}/${birthCertNum}`);
+      document.getElementById('healthQrLarge').innerHTML =
+        genQr(`civic://verify/health/XJP-2841-04`);
+    }
+
+    const u = getCitizen();
+    if (u) {
+      renderLicenseCard(u);
+      renderDetails(u);
+      renderRenewalStatus(u);
+      renderOtherDocs(u);
+      applyStateTheme(u.state);
+      document.getElementById('licGlyph').style.backgroundImage =
+        `url('${getStateFlagUrl(u.state)}')`;
+
+      document.getElementById('licBackState').textContent = u.stateName.toUpperCase();
+      const qrData = encodeURIComponent(`civic://verify/${u.state}/${u.licenseNumber}`);
+      document.getElementById('licQrLarge').innerHTML =
+        `<img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=2&qzone=1&data=${qrData}" alt="QR code">`;
+    }
+  </script>
+</body>
+</html>

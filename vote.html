@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting — ePluribus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="vote">
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main-content">
+      <div class="disclaimer">
+        ⓘ <strong>Demo data:</strong> Registration status, elections, and ballot history shown are simulated.
+      </div>
+
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Voting &amp; Registration</h1>
+          <p id="voteSub">Your registration status, upcoming elections, and ballot history.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="alert('Update registration form would open. (Demo)');">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          Update registration
+        </button>
+      </div>
+
+      <div class="banner-success">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div>You are <strong>registered to vote</strong> and your registration is <strong>active</strong>. Last verified against the state voter file 2 days ago.</div>
+      </div>
+
+      <div class="grid-4 mb-6">
+        <div class="stat">
+          <div class="stat-label">Status</div>
+          <div class="stat-value" style="font-size:18px;">Active <span class="badge badge-success" style="vertical-align:middle;">Verified</span></div>
+          <div class="stat-trend">Registered 2014</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Party affiliation</div>
+          <div class="stat-value" style="font-size:18px;" id="voteParty">Independent</div>
+          <div class="stat-trend">Last changed 2018</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Polling place</div>
+          <div class="stat-value" style="font-size:18px;" id="votePolling">Mar Vista Rec Ctr</div>
+          <div class="stat-trend">0.6 mi from home</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Next election</div>
+          <div class="stat-value" style="font-size:18px;">Jun 4, 2026</div>
+          <div class="stat-trend up">32 days · vote-by-mail open</div>
+        </div>
+      </div>
+
+      <h2 class="text-xl mb-4">Upcoming Elections</h2>
+      <div class="grid-2 mb-6">
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">Primary Election</div>
+            <span class="badge badge-warning"><span class="dot"></span>32 days</span>
+          </div>
+          <p class="text-muted mb-4">State, county, and federal primaries. Vote-by-mail ballots are mailed 29 days before election day; early voting opens at 11 sites in your county.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Election day</label><div class="value">Jun 4, 2026</div></div>
+            <div class="info-field"><label>Vote by mail</label><div class="value">Opens May 6</div></div>
+            <div class="info-field"><label>Early voting</label><div class="value">May 25 – Jun 3</div></div>
+            <div class="info-field"><label>Ballot drop boxes</label><div class="value">14 in district</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-primary" onclick="alert('Sample ballot opens. (Demo)');">View sample ballot</button>
+            <button class="btn btn-secondary" onclick="alert('Mail ballot request submitted. (Demo)');">Request mail ballot</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row-between mb-2">
+            <div class="card-title">School Board Special Election</div>
+            <span class="badge badge-info"><span class="dot"></span>Aug 12</span>
+          </div>
+          <p class="text-muted mb-4">Two open seats on the unified school district board, plus a measure on bond financing for facility upgrades.</p>
+          <div class="grid-2" style="gap:12px;">
+            <div class="info-field"><label>Election day</label><div class="value">Aug 12, 2026</div></div>
+            <div class="info-field"><label>Registration deadline</label><div class="value">Jul 28</div></div>
+            <div class="info-field"><label>Polling hours</label><div class="value">7 AM – 8 PM</div></div>
+            <div class="info-field"><label>Measures</label><div class="value">1 bond measure</div></div>
+          </div>
+          <div class="row mt-4" style="gap:8px;">
+            <button class="btn btn-secondary" onclick="alert('Reminder set. (Demo)');">Remind me</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Voting History</div>
+            <a class="card-link" href="#">Export</a>
+          </div>
+          <table class="table">
+            <thead><tr><th>Date</th><th>Election</th><th>Method</th></tr></thead>
+            <tbody>
+              <tr><td>Nov 5, 2024</td><td>General Election</td><td>Mail</td></tr>
+              <tr><td>Mar 5, 2024</td><td>Primary Election</td><td>Mail</td></tr>
+              <tr><td>Nov 8, 2022</td><td>Midterm General</td><td>In person · early</td></tr>
+              <tr><td>Jun 7, 2022</td><td>Primary Election</td><td>Mail</td></tr>
+              <tr><td>Nov 3, 2020</td><td>Presidential General</td><td>In person</td></tr>
+              <tr><td>Mar 3, 2020</td><td>Presidential Primary</td><td>In person</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Registration on File</div>
+            <span class="badge badge-success"><span class="dot"></span>Verified</span>
+          </div>
+          <div class="scanned-info">
+            <div class="info-field full"><label>Voter ID</label><div class="value" id="voteVoterId">VR-CA-4477-2014</div></div>
+            <div class="info-field"><label>Registered since</label><div class="value">Mar 14, 2014</div></div>
+            <div class="info-field"><label>Affiliation</label><div class="value">Independent</div></div>
+            <div class="info-field full"><label>Address on file</label><div class="value" id="voteAddr">—</div></div>
+            <div class="info-field"><label>Precinct</label><div class="value">8412</div></div>
+            <div class="info-field"><label>District</label><div class="value">CA-37</div></div>
+          </div>
+          <p class="text-sm text-muted mt-4">Your voter address must match your driver's license address. To change it, update your license details and the change propagates within 24 hours.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    const u = getCitizen();
+    if (u) {
+      document.getElementById('voteSub').textContent =
+        `Your registration in ${u.city}, ${u.stateName}, plus upcoming elections and ballot history.`;
+      document.getElementById('voteAddr').textContent =
+        `${u.address}, ${u.city}, ${u.state} ${u.zip}`;
+      document.getElementById('voteVoterId').textContent =
+        `VR-${u.state}-${u.licenseNumber.replace(/[^0-9]/g, '').slice(-4)}-2014`;
+    }
+  </script>
+</body>
+</html>
