@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A static, vanilla HTML/CSS/JS proof-of-concept for **Civic** — a US state services portal modeled on Ukraine's Diia platform. The user scans a driver's license to "authenticate," then accesses a dashboard plus five service areas (Digital License, State Taxes, Healthcare, Benefits, Business). All "scanning," "filing," and "verification" is simulated. There is no backend.
+A static, vanilla HTML/CSS/JS proof-of-concept for **ePluribus** — a US state services portal modeled on Ukraine's Diia platform. The user scans a driver's license to "authenticate," then accesses a dashboard plus a wallet of digital documents and a dozen service areas (taxes, healthcare, benefits, business, voting, jobs, repairs, tickets, civic engagement). All "scanning," "filing," and "verification" is simulated. There is no backend.
 
 There is no build step, no package manager, and no dependencies.
+
+The visual design follows Diia: pure-white tiles floating on cool light gray with soft drop shadows, pastel-tinted Quick-Services icons, the citizen's per-state license accent for the sidebar's active chip / hero eyebrow / chatbot avatar / badges, and bold black for primary action buttons. The license card and the wallet doc cards (passport, dental, vision, health insurance) keep their richer self-contained designs — they are the visual showpieces of the demo.
 
 ## Running the site
 
@@ -20,19 +22,6 @@ python3 -m http.server 8767 --bind 127.0.0.1
 
 Any static file server works (`npx serve`, `caddy file-server`, etc.); pick whatever's already installed.
 
-## Diia-style preview branch
-
-This is a visual preview fork of the original `civic-usa/`. Visual chrome
-was redesigned in the spirit of Ukraine's Diia app: hairline gray borders
-are replaced by pure-white tiles floating on a cool light-gray bg with
-soft drop shadows, the accent color is Ukrainian-flag yellow (#FFD500)
-used for CTAs and the active sidebar nav chip, primary action buttons are
-solid black pills, and typography leans bolder (700–800 weights on the
-hero and section titles). License and wallet doc cards are intentionally
-preserved.
-
-Run on port 8767 to compare side-by-side with the original at port 8765
-and the Gemini variant at port 8766.
 
 ## Architecture
 
